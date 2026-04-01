@@ -5,13 +5,12 @@ let allDomains = [];
 fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vSitqWwfiqP8hkEmrwOhJbg0gBj3LUgp_Iqa8WHWLUCjY0455r4mZv-KVd5oFIyWZ-3sOMdwACQwnVT/pub?output=csv')
 .then(res => res.text())
 .then(text => {
-    let rows = text.split("\n").slice(1);
 
-    allDomains = rows.map(row => {
-        return {
-            name: row.trim()
-        };
-    });
+    let rows = text.split("\n");
+
+    allDomains = rows
+        .map(row => row.trim())
+        .filter(row => row !== "" && row !== "name"); // حذف الفارغ والعنوان
 
     showDomains(allDomains);
 });
@@ -20,11 +19,11 @@ function showDomains(domains) {
     let container = document.getElementById('domains');
     container.innerHTML = '';
 
-    domains.forEach(d => {
+    domains.forEach(domain => {
         container.innerHTML += `
         <div class="card">
-            <div class="domain">${d.name}</div>
-            <a href="https://www.godaddy.com/domainsearch/find?domainToCheck=${d.name}" target="_blank">
+            <div class="domain">${domain}</div>
+            <a href="https://www.godaddy.com/domainsearch/find?domainToCheck=${domain}" target="_blank">
                 <button>Check & Buy</button>
             </a>
         </div>
