@@ -1,80 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Premium Domains</title>
-
-<style>
-body {
-    font-family: Arial;
-    background: #0f172a;
-    color: white;
-    text-align: center;
-}
-
-h1 {
-    margin-top: 30px;
-}
-
-input {
-    padding: 10px;
-    width: 300px;
-    border-radius: 10px;
-    border: none;
-    margin-bottom: 20px;
-}
-
-.container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 40px;
-}
-
-.card {
-    background: #1e293b;
-    padding: 20px;
-    border-radius: 15px;
-}
-
-.domain {
-    font-size: 20px;
-}
-
-.price {
-    color: #38bdf8;
-}
-
-button {
-    background: #22c55e;
-    border: none;
-    padding: 10px;
-    border-radius: 10px;
-    margin-top: 10px;
-    cursor: pointer;
-}
-
-</style>
-</head>
-
-<body>
-
-<h1>🔥 My Domains For Sale</h1>
-
-<input type="text" id="search" placeholder="Search domain...">
-
-<div class="container" id="domains"></div>
-
 <script>
 
 let allDomains = [];
 
-fetch('domains.json')
-.then(res => res.json())
-.then(data => {
-    allDomains = data;
-    showDomains(data);
+fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vSitqWwfiqP8hkEmrwOhJbg0gBj3LUgp_Iqa8WHWLUCjY0455r4mZv-KVd5oFIyWZ-3sOMdwACQwnVT/pub?output=csv')
+.then(res => res.text())
+.then(text => {
+    let rows = text.split("\n").slice(1);
+
+    allDomains = rows.map(row => {
+        return {
+            name: row.trim()
+        };
+    });
+
+    showDomains(allDomains);
 });
 
 function showDomains(domains) {
@@ -85,22 +24,12 @@ function showDomains(domains) {
         container.innerHTML += `
         <div class="card">
             <div class="domain">${d.name}</div>
-            <div class="price">$${d.price}</div>
             <a href="https://www.godaddy.com/domainsearch/find?domainToCheck=${d.name}" target="_blank">
-                <button>Buy Now</button>
+                <button>Check & Buy</button>
             </a>
         </div>
         `;
     });
 }
 
-document.getElementById('search').addEventListener('input', function() {
-    let value = this.value.toLowerCase();
-    let filtered = allDomains.filter(d => d.name.toLowerCase().includes(value));
-    showDomains(filtered);
-});
-
 </script>
-
-</body>
-</html>
