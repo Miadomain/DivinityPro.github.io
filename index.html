@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DivinityPro - Premium Domains</title>
+<title>DivinityPro - Premium Domains Marketplace</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 <style>
 /* عام */
 body {
@@ -14,114 +15,146 @@ body {
     color: #333;
 }
 a { text-decoration: none; }
-h1, h2 { margin: 0; }
-.container { width: 90%; max-width: 1200px; margin: auto; }
 
-/* الهيدر واللوغو */
+/* هيدر */
 header {
-    background: #0d6efd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background: linear-gradient(90deg,#0d6efd,#6610f2);
     color: white;
-    padding: 15px 0;
-    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
-header img { height: 50px; vertical-align: middle; margin-right: 10px; }
-header h1 { display: inline-block; vertical-align: middle; font-size: 28px; }
+header h1 { margin:0; font-size:28px; font-weight:600; }
+header nav a { margin-left:20px; color:white; font-weight:500; transition:0.3s; }
+header nav a:hover { color:#ffc107; }
 
 /* سلايدر */
 .slider {
     position: relative;
     overflow: hidden;
-    height: 300px;
-    margin: 20px 0;
-    border-radius: 10px;
+    height: 400px;
 }
 .slide {
-    width: 100%;
-    height: 100%;
-    position: absolute;
+    width:100%;
+    height:100%;
+    position:absolute;
     background-size: cover;
     background-position: center;
-    opacity: 0;
+    opacity:0;
     transition: opacity 1s ease-in-out;
 }
-.slide.active { opacity: 1; }
+.slide.active { opacity:1; }
+
+/* Search & Filter */
+.search-container {
+    text-align:center;
+    margin:30px 0 10px 0;
+}
+.search-container input, .search-container select {
+    padding:10px;
+    font-size:16px;
+    margin:5px;
+    border-radius:5px;
+    border:1px solid #ccc;
+}
 
 /* بطاقات الدومينات */
 #domains {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 15px;
-    margin: 30px 0;
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+    gap:20px;
+    width:90%;
+    margin: auto;
 }
 .card {
-    background: white;
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-    text-align: center;
-    transition: transform 0.2s;
+    background:white;
+    border-radius:10px;
+    padding:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    text-align:center;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
-.card:hover { transform: translateY(-5px); }
-.domain { font-weight: 600; color: #0d6efd; margin-bottom: 10px; word-wrap: break-word; }
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+.domain { font-weight:600; font-size:18px; color:#0d6efd; margin-bottom:10px; word-wrap:break-word; }
 button {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
+    background-color:#28a745;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:5px;
+    cursor:pointer;
+    font-size:14px;
+    transition:0.3s;
 }
-button:hover { background-color: #218838; }
+button:hover { background-color:#218838; }
 
 /* أقسام إضافية */
-section { padding: 40px 0; }
-section h2 { text-align: center; margin-bottom: 20px; }
-.about, .contact { background: #fff; border-radius: 10px; padding: 20px; box-shadow: 0 3px 6px rgba(0,0,0,0.1); }
+section { padding:50px 5%; }
+section h2 { text-align:center; margin-bottom:25px; font-size:28px; }
+.about, .contact { background:white; border-radius:10px; padding:25px; box-shadow:0 5px 15px rgba(0,0,0,0.1); max-width:900px; margin:auto; }
+#domainCount { text-align:center; font-weight:600; font-size:20px; color:#6610f2; margin-bottom:20px; }
 
-/* عداد الدومينات */
-#domainCount {
-    text-align: center;
-    font-size: 20px;
-    font-weight: 600;
-    color: #0d6efd;
-    margin-bottom: 20px;
+/* Responsive */
+@media(max-width:768px){
+    header { flex-direction: column; }
+    header nav a { margin-left:0; margin-top:10px; }
+    .slider { height:250px; }
 }
 </style>
 </head>
 <body>
 
 <header>
-    <img src="https://via.placeholder.com/50x50.png?text=D" alt="Logo">
     <h1>DivinityPro</h1>
+    <nav>
+        <a href="#domains">Domains</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
 </header>
 
 <!-- سلايدر -->
-<div class="container">
-    <div class="slider">
-        <div class="slide active" style="background-image:url('https://via.placeholder.com/1200x300/0d6efd/fff?text=Premium+Domains+1');"></div>
-        <div class="slide" style="background-image:url('https://via.placeholder.com/1200x300/28a745/fff?text=Premium+Domains+2');"></div>
-        <div class="slide" style="background-image:url('https://via.placeholder.com/1200x300/f39c12/fff?text=Premium+Domains+3');"></div>
-    </div>
+<div class="slider">
+    <div class="slide active" style="background-image:url('https://via.placeholder.com/1200x400/0d6efd/fff?text=Premium+Domains');"></div>
+    <div class="slide" style="background-image:url('https://via.placeholder.com/1200x400/6610f2/fff?text=Build+Your+Brand');"></div>
+    <div class="slide" style="background-image:url('https://via.placeholder.com/1200x400/ffc107/000?text=Invest+in+Domains');"></div>
+</div>
+
+<!-- بحث وفلترة -->
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search domains...">
+    <select id="extensionFilter">
+        <option value="">All Extensions</option>
+        <option value=".com">.com</option>
+        <option value=".net">.net</option>
+        <option value=".org">.org</option>
+    </select>
 </div>
 
 <!-- عداد الدومينات -->
 <div id="domainCount">Loading domains...</div>
 
 <!-- بطاقات الدومينات -->
-<div class="container" id="domains"></div>
+<div id="domains"></div>
 
-<!-- من نحن -->
-<section>
-    <div class="container about">
+<!-- About Us -->
+<section id="about">
+    <div class="about">
         <h2>About Us</h2>
-        <p>We are DivinityPro, a professional domain reseller. We provide premium domains ready for your brand. Trusted by domainers worldwide.</p>
+        <p>DivinityPro is a professional domain reseller offering premium domains ready for brands and businesses worldwide. Trusted by domainers globally.</p>
     </div>
 </section>
 
-<!-- تواصل معنا -->
-<section>
-    <div class="container contact">
+<!-- Contact -->
+<section id="contact">
+    <div class="contact">
         <h2>Contact Us</h2>
         <p>Email: info@divinitypro.com</p>
         <p>Phone: +1 234 567 890</p>
@@ -136,7 +169,7 @@ setInterval(() => {
     slides[currentSlide].classList.remove('active');
     currentSlide = (currentSlide + 1) % slides.length;
     slides[currentSlide].classList.add('active');
-}, 4000);
+},4000);
 
 // جلب الدومينات من Google Sheets
 let allDomains = [];
@@ -149,20 +182,31 @@ fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vRFLTWddJjWfI0WG0HZp4uOmx
     document.getElementById('domainCount').innerText = `Available Domains: ${allDomains.length}`;
 });
 
-function showDomains(domains) {
+// عرض الدومينات
+function showDomains(domains){
     let container = document.getElementById('domains');
     let html = '';
     domains.forEach(domain => {
-        html += `
-        <div class="card">
+        html += `<div class="card">
             <div class="domain">${domain}</div>
             <a href="https://www.godaddy.com/domainsearch/find?domainToCheck=${domain}" target="_blank">
                 <button>Check & Buy</button>
             </a>
-        </div>
-        `;
+        </div>`;
     });
     container.innerHTML = html;
+}
+
+// البحث الحي وفلترة الامتداد
+document.getElementById('searchInput').addEventListener('input',filterDomains);
+document.getElementById('extensionFilter').addEventListener('change',filterDomains);
+
+function filterDomains(){
+    let search = document.getElementById('searchInput').value.toLowerCase();
+    let ext = document.getElementById('extensionFilter').value;
+    let filtered = allDomains.filter(d => d.toLowerCase().includes(search) && (ext==="" || d.endsWith(ext)));
+    showDomains(filtered);
+    document.getElementById('domainCount').innerText = `Available Domains: ${filtered.length}`;
 }
 </script>
 
