@@ -1,20 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DivinityPro - Premium Domains Marketplace</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-<style>
 /* عام */
 body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
-    background: #f8f9fa;
-    color: #333;
+    background: #121212; /* خلفية سوداء داكنة */
+    color: #f0f0f0; /* نص أبيض فاتح */
 }
-a { text-decoration: none; }
+a { 
+    text-decoration: none; 
+    color: #0d6efd; /* ألوان الروابط الزرقاء لتكون واضحة على الأسود */
+}
+a:hover { color: #ffc107; }
 
 /* هيدر */
 header {
@@ -59,7 +54,9 @@ header nav a:hover { color:#ffc107; }
     font-size:16px;
     margin:5px;
     border-radius:5px;
-    border:1px solid #ccc;
+    border:1px solid #444;
+    background:#1e1e1e; /* خلفية الداكنة للحقول */
+    color:#f0f0f0;
 }
 
 /* بطاقات الدومينات */
@@ -71,16 +68,16 @@ header nav a:hover { color:#ffc107; }
     margin: auto;
 }
 .card {
-    background:white;
+    background:#1f1f1f; /* بطاقة داكنة */
     border-radius:10px;
     padding:15px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    box-shadow:0 5px 15px rgba(0,0,0,0.5);
     text-align:center;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 .card:hover {
     transform: translateY(-8px);
-    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    box-shadow:0 10px 25px rgba(0,0,0,0.8);
 }
 .domain { font-weight:600; font-size:18px; color:#0d6efd; margin-bottom:10px; word-wrap:break-word; }
 button {
@@ -97,8 +94,8 @@ button:hover { background-color:#218838; }
 
 /* أقسام إضافية */
 section { padding:50px 5%; }
-section h2 { text-align:center; margin-bottom:25px; font-size:28px; }
-.about, .contact { background:white; border-radius:10px; padding:25px; box-shadow:0 5px 15px rgba(0,0,0,0.1); max-width:900px; margin:auto; }
+section h2 { text-align:center; margin-bottom:25px; font-size:28px; color:#ffc107; }
+.about, .contact { background:#1f1f1f; border-radius:10px; padding:25px; box-shadow:0 5px 15px rgba(0,0,0,0.5); max-width:900px; margin:auto; }
 #domainCount { text-align:center; font-weight:600; font-size:20px; color:#6610f2; margin-bottom:20px; }
 
 /* Responsive */
@@ -107,108 +104,3 @@ section h2 { text-align:center; margin-bottom:25px; font-size:28px; }
     header nav a { margin-left:0; margin-top:10px; }
     .slider { height:250px; }
 }
-</style>
-</head>
-<body>
-
-<header>
-    <h1>DivinityPro</h1>
-    <nav>
-        <a href="#domains">Domains</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-    </nav>
-</header>
-
-<!-- سلايدر -->
-<div class="slider">
-    <div class="slide active" style="background-image:url('https://via.placeholder.com/1200x400/0d6efd/fff?text=Premium+Domains');"></div>
-    <div class="slide" style="background-image:url('https://via.placeholder.com/1200x400/6610f2/fff?text=Build+Your+Brand');"></div>
-    <div class="slide" style="background-image:url('https://via.placeholder.com/1200x400/ffc107/000?text=Invest+in+Domains');"></div>
-</div>
-
-<!-- بحث وفلترة -->
-<div class="search-container">
-    <input type="text" id="searchInput" placeholder="Search domains...">
-    <select id="extensionFilter">
-        <option value="">All Extensions</option>
-        <option value=".com">.com</option>
-        <option value=".net">.net</option>
-        <option value=".org">.org</option>
-    </select>
-</div>
-
-<!-- عداد الدومينات -->
-<div id="domainCount">Loading domains...</div>
-
-<!-- بطاقات الدومينات -->
-<div id="domains"></div>
-
-<!-- About Us -->
-<section id="about">
-    <div class="about">
-        <h2>About Us</h2>
-        <p>DivinityPro is a professional domain reseller offering premium domains ready for brands and businesses worldwide. Trusted by domainers globally.</p>
-    </div>
-</section>
-
-<!-- Contact -->
-<section id="contact">
-    <div class="contact">
-        <h2>Contact Us</h2>
-        <p>Email: info@divinitypro.com</p>
-        <p>Phone: +1 234 567 890</p>
-    </div>
-</section>
-
-<script>
-// سلايدر تلقائي
-let slides = document.querySelectorAll('.slide');
-let currentSlide = 0;
-setInterval(() => {
-    slides[currentSlide].classList.remove('active');
-    currentSlide = (currentSlide + 1) % slides.length;
-    slides[currentSlide].classList.add('active');
-},4000);
-
-// جلب الدومينات من Google Sheets
-let allDomains = [];
-fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vRFLTWddJjWfI0WG0HZp4uOmxobQ6Tfzw4WiheRdAiwkh0ywEdDma7MQSznkp9FCSCcRLfTT0KTbyfw/pub?output=csv')
-.then(res => res.text())
-.then(text => {
-    let rows = text.split(/\r?\n/);
-    allDomains = rows.map(row => row.trim()).filter(row => row !== "" && row.toLowerCase() !== "name");
-    showDomains(allDomains);
-    document.getElementById('domainCount').innerText = `Available Domains: ${allDomains.length}`;
-});
-
-// عرض الدومينات
-function showDomains(domains){
-    let container = document.getElementById('domains');
-    let html = '';
-    domains.forEach(domain => {
-        html += `<div class="card">
-            <div class="domain">${domain}</div>
-            <a href="https://www.godaddy.com/domainsearch/find?domainToCheck=${domain}" target="_blank">
-                <button>Check & Buy</button>
-            </a>
-        </div>`;
-    });
-    container.innerHTML = html;
-}
-
-// البحث الحي وفلترة الامتداد
-document.getElementById('searchInput').addEventListener('input',filterDomains);
-document.getElementById('extensionFilter').addEventListener('change',filterDomains);
-
-function filterDomains(){
-    let search = document.getElementById('searchInput').value.toLowerCase();
-    let ext = document.getElementById('extensionFilter').value;
-    let filtered = allDomains.filter(d => d.toLowerCase().includes(search) && (ext==="" || d.endsWith(ext)));
-    showDomains(filtered);
-    document.getElementById('domainCount').innerText = `Available Domains: ${filtered.length}`;
-}
-</script>
-
-</body>
-</html>
