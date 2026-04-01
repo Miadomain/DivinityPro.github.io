@@ -3,77 +3,155 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DivinityPro Domains</title>
+<title>DivinityPro - Premium Domains</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        background: #f4f4f4;
-        margin: 0;
-        padding: 20px;
-    }
-    h1 {
-        text-align: center;
-        color: #333;
-    }
-    #domains {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 15px;
-        margin-top: 20px;
-    }
-    .card {
-        background: #fff;
-        border-radius: 10px;
-        padding: 15px;
-        box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-        text-align: center;
-        transition: transform 0.2s;
-    }
-    .card:hover {
-        transform: translateY(-5px);
-    }
-    .domain {
-        font-weight: bold;
-        margin-bottom: 10px;
-        color: #0070f3;
-        word-wrap: break-word;
-    }
-    button {
-        background-color: #28a745;
-        color: white;
-        border: none;
-        padding: 8px 12px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 14px;
-    }
-    button:hover {
-        background-color: #218838;
-    }
+/* عام */
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: #f8f9fa;
+    color: #333;
+}
+a { text-decoration: none; }
+h1, h2 { margin: 0; }
+.container { width: 90%; max-width: 1200px; margin: auto; }
+
+/* الهيدر واللوغو */
+header {
+    background: #0d6efd;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+}
+header img { height: 50px; vertical-align: middle; margin-right: 10px; }
+header h1 { display: inline-block; vertical-align: middle; font-size: 28px; }
+
+/* سلايدر */
+.slider {
+    position: relative;
+    overflow: hidden;
+    height: 300px;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+.slide {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+.slide.active { opacity: 1; }
+
+/* بطاقات الدومينات */
+#domains {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+    margin: 30px 0;
+}
+.card {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.2s;
+}
+.card:hover { transform: translateY(-5px); }
+.domain { font-weight: 600; color: #0d6efd; margin-bottom: 10px; word-wrap: break-word; }
+button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+button:hover { background-color: #218838; }
+
+/* أقسام إضافية */
+section { padding: 40px 0; }
+section h2 { text-align: center; margin-bottom: 20px; }
+.about, .contact { background: #fff; border-radius: 10px; padding: 20px; box-shadow: 0 3px 6px rgba(0,0,0,0.1); }
+
+/* عداد الدومينات */
+#domainCount {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    color: #0d6efd;
+    margin-bottom: 20px;
+}
 </style>
 </head>
 <body>
 
-<h1>Available Domains for Sale</h1>
-<div id="domains"></div>
+<header>
+    <img src="https://via.placeholder.com/50x50.png?text=D" alt="Logo">
+    <h1>DivinityPro</h1>
+</header>
+
+<!-- سلايدر -->
+<div class="container">
+    <div class="slider">
+        <div class="slide active" style="background-image:url('https://via.placeholder.com/1200x300/0d6efd/fff?text=Premium+Domains+1');"></div>
+        <div class="slide" style="background-image:url('https://via.placeholder.com/1200x300/28a745/fff?text=Premium+Domains+2');"></div>
+        <div class="slide" style="background-image:url('https://via.placeholder.com/1200x300/f39c12/fff?text=Premium+Domains+3');"></div>
+    </div>
+</div>
+
+<!-- عداد الدومينات -->
+<div id="domainCount">Loading domains...</div>
+
+<!-- بطاقات الدومينات -->
+<div class="container" id="domains"></div>
+
+<!-- من نحن -->
+<section>
+    <div class="container about">
+        <h2>About Us</h2>
+        <p>We are DivinityPro, a professional domain reseller. We provide premium domains ready for your brand. Trusted by domainers worldwide.</p>
+    </div>
+</section>
+
+<!-- تواصل معنا -->
+<section>
+    <div class="container contact">
+        <h2>Contact Us</h2>
+        <p>Email: info@divinitypro.com</p>
+        <p>Phone: +1 234 567 890</p>
+    </div>
+</section>
 
 <script>
-let allDomains = [];
+// سلايدر تلقائي
+let slides = document.querySelectorAll('.slide');
+let currentSlide = 0;
+setInterval(() => {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add('active');
+}, 4000);
 
+// جلب الدومينات من Google Sheets
+let allDomains = [];
 fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vRFLTWddJjWfI0WG0HZp4uOmxobQ6Tfzw4WiheRdAiwkh0ywEdDma7MQSznkp9FCSCcRLfTT0KTbyfw/pub?output=csv')
 .then(res => res.text())
 .then(text => {
-    let rows = text.split(/\r?\n/); // دعم أسطر مختلفة
-    allDomains = rows
-        .map(row => row.trim())
-        .filter(row => row !== "" && row.toLowerCase() !== "name"); // حذف الفارغ والعنوان
+    let rows = text.split(/\r?\n/);
+    allDomains = rows.map(row => row.trim()).filter(row => row !== "" && row.toLowerCase() !== "name");
     showDomains(allDomains);
+    document.getElementById('domainCount').innerText = `Available Domains: ${allDomains.length}`;
 });
 
 function showDomains(domains) {
     let container = document.getElementById('domains');
     let html = '';
-
     domains.forEach(domain => {
         html += `
         <div class="card">
@@ -84,7 +162,6 @@ function showDomains(domains) {
         </div>
         `;
     });
-
     container.innerHTML = html;
 }
 </script>
