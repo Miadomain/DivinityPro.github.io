@@ -4,211 +4,344 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DivinityPro - Premium Domains Marketplace</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
 <style>
-/* عام */
-body {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    /* خلفية سوداء براقة مع Overlay ذهبي */
-    background: linear-gradient(rgba(255,215,0,0.05), rgba(255,215,0,0.05)), 
-                url('https://images.unsplash.com/photo-1518779578993-ec3579fee39e?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-    color: #f0f0f0;
-}
-a { text-decoration: none; color: #0d6efd; }
-a:hover { color: #ffc107; }
 
-/* هيدر */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 5%;
-    background: linear-gradient(90deg,#0d6efd,#6610f2);
-    color: white;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-header h1 { margin:0; font-size:28px; font-weight:600; }
-header nav a { margin-left:20px; color:white; font-weight:500; transition:0.3s; }
-header nav a:hover { color:#ffc107; }
-
-/* سلايدر */
-.slider {
-    position: relative;
-    overflow: hidden;
-    height: 400px;
-    border-radius: 15px;
-    margin: 20px auto;
-    width: 90%;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.7);
-}
-.slide {
-    width:100%;
-    height:100%;
-    position:absolute;
-    background-size: cover;
-    background-position: center;
-    opacity:0;
-    transition: opacity 1s ease-in-out;
-    border-radius: 15px;
-}
-.slide.active { opacity:1; }
-
-/* Search & Filter */
-.search-container {
-    text-align:center;
-    margin:30px 0 10px 0;
-}
-.search-container input, .search-container select {
-    padding:10px;
-    font-size:16px;
-    margin:5px;
-    border-radius:5px;
-    border:1px solid #444;
-    background:#1e1e1e;
+/* ===== عام ===== */
+body{
+    margin:0;
+    font-family:'Montserrat',sans-serif;
+    background:#0e0e0e;
     color:#f0f0f0;
 }
 
-/* بطاقات الدومينات */
-#domains {
+a{text-decoration:none;color:#0d6efd;}
+a:hover{color:#ffc107;}
+
+/* ===== Header ===== */
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 5%;
+    background:linear-gradient(90deg,#0d6efd,#6610f2);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+header h1{margin:0;font-size:28px;}
+header nav a{
+    margin-left:20px;
+    color:white;
+    font-weight:500;
+}
+
+/* ===== SLIDER PROFESSIONAL ===== */
+
+.slider{
+    position:relative;
+    overflow:hidden;
+    width:90%;
+    margin:25px auto;
+    height:500px; /* Desktop 1600x500 */
+    border-radius:18px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.8);
+}
+
+.slide{
+    position:absolute;
+    width:100%;
+    height:100%;
+    opacity:0;
+    transition:opacity 1.2s ease-in-out;
+    background-size:cover;
+    background-position:center;
+}
+
+/* Overlay احترافي */
+.slide::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        rgba(0,0,0,0.55),
+        rgba(0,0,0,0.65)
+    );
+}
+
+.slide.active{opacity:1;}
+
+.slide-content{
+    position:absolute;
+    top:50%;
+    left:8%;
+    transform:translateY(-50%);
+    z-index:2;
+    max-width:550px;
+}
+
+.slide-content h2{
+    font-size:42px;
+    color:#ffc107;
+    margin-bottom:15px;
+}
+
+.slide-content p{
+    font-size:18px;
+    margin-bottom:20px;
+}
+
+.slide-content button{
+    background:#ffc107;
+    border:none;
+    padding:12px 22px;
+    font-size:16px;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.slide-content button:hover{
+    background:#ffd84d;
+}
+
+/* ===== Search ===== */
+
+.search-container{
+    text-align:center;
+    margin:30px 0 10px;
+}
+
+.search-container input,
+.search-container select{
+    padding:10px;
+    margin:5px;
+    background:#1e1e1e;
+    border:1px solid #444;
+    color:white;
+    border-radius:6px;
+}
+
+/* ===== Domains Grid ===== */
+
+#domains{
     display:grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+    grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
     gap:20px;
     width:90%;
-    margin: auto;
+    margin:auto;
 }
-.card {
+
+.card{
     background:#1f1f1f;
-    border-radius:10px;
     padding:15px;
-    box-shadow:0 5px 20px rgba(255,215,0,0.2);
+    border-radius:12px;
     text-align:center;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition:.3s;
+    box-shadow:0 5px 20px rgba(255,215,0,.2);
 }
-.card:hover {
-    transform: translateY(-8px);
-    box-shadow:0 10px 30px rgba(255,215,0,0.5);
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 10px 30px rgba(255,215,0,.5);
 }
-.domain { font-weight:600; font-size:18px; color:#ffc107; margin-bottom:10px; word-wrap:break-word; }
-button { background-color:#28a745; color:white; border:none; padding:10px 15px; border-radius:5px; cursor:pointer; font-size:14px; transition:0.3s; }
-button:hover { background-color:#218838; }
 
-/* أقسام إضافية */
-section { padding:50px 5%; }
-section h2 { text-align:center; margin-bottom:25px; font-size:28px; color:#ffc107; }
-.about, .contact { background:#1f1f1f; border-radius:10px; padding:25px; box-shadow:0 5px 20px rgba(255,215,0,0.2); max-width:900px; margin:auto; }
-#domainCount { text-align:center; font-weight:600; font-size:20px; color:#ffcc00; margin-bottom:20px; }
+.domain{
+    font-size:18px;
+    color:#ffc107;
+    margin-bottom:10px;
+}
 
-/* Responsive */
+button{
+    background:#28a745;
+    border:none;
+    padding:10px 15px;
+    border-radius:5px;
+    color:white;
+    cursor:pointer;
+}
+
+/* ===== Sections ===== */
+
+section{padding:50px 5%;}
+section h2{text-align:center;color:#ffc107;}
+
+.about,.contact{
+    background:#1f1f1f;
+    padding:25px;
+    border-radius:10px;
+    max-width:900px;
+    margin:auto;
+}
+
+#domainCount{
+    text-align:center;
+    font-size:20px;
+    color:#ffcc00;
+    margin-bottom:20px;
+}
+
+/* ===== MOBILE ===== */
+
 @media(max-width:768px){
-    header { flex-direction: column; }
-    header nav a { margin-left:0; margin-top:10px; }
-    .slider { height:250px; }
+
+.slider{
+    height:260px; /* حجم مناسب للموبايل */
 }
+
+.slide-content h2{
+    font-size:24px;
+}
+
+.slide-content p{
+    font-size:14px;
+}
+
+header{
+    flex-direction:column;
+}
+
+header nav a{
+    margin:10px;
+}
+}
+
 </style>
 </head>
+
 <body>
 
 <header>
-    <h1>DivinityPro</h1>
-    <nav>
-        <a href="#domains">Domains</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-    </nav>
+<h1>DivinityPro</h1>
+<nav>
+<a href="#domains">Domains</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</nav>
 </header>
 
-<!-- سلايدر -->
+<!-- ===== PROFESSIONAL SLIDER ===== -->
+
 <div class="slider">
-    <div class="slide active" style="background-image:url('https://via.placeholder.com/1600x500/0d6efd/fff?text=Premium+Domains');"></div>
-    <div class="slide" style="background-image:url('https://via.placeholder.com/1600x500/6610f2/fff?text=Build+Your+Brand');"></div>
-    <div class="slide" style="background-image:url('https://via.placeholder.com/1600x500/ffc107/000?text=Invest+in+Domains');"></div>
+
+<div class="slide active"
+style="background-image:url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1600&q=80');">
+<div class="slide-content">
+<h2>Premium Domains Marketplace</h2>
+<p>Find powerful brandable domains ready for your next startup.</p>
+<button onclick="location.href='#domains'">Browse Domains</button>
+</div>
 </div>
 
-<!-- بحث وفلترة -->
+<div class="slide"
+style="background-image:url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80');">
+<div class="slide-content">
+<h2>Build Your Online Brand</h2>
+<p>Secure memorable domain names that grow your business.</p>
+<button onclick="location.href='#domains'">Explore Now</button>
+</div>
+</div>
+
+<div class="slide"
+style="background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=80');">
+<div class="slide-content">
+<h2>Invest In Digital Assets</h2>
+<p>Premium domains are the real estate of the internet.</p>
+<button onclick="location.href='#domains'">Start Investing</button>
+</div>
+</div>
+
+</div>
+
+<!-- Search -->
 <div class="search-container">
-    <input type="text" id="searchInput" placeholder="Search domains...">
-    <select id="extensionFilter">
-        <option value="">All Extensions</option>
-        <option value=".com">.com</option>
-        <option value=".net">.net</option>
-        <option value=".org">.org</option>
-    </select>
+<input type="text" id="searchInput" placeholder="Search domains...">
+<select id="extensionFilter">
+<option value="">All Extensions</option>
+<option value=".com">.com</option>
+<option value=".net">.net</option>
+<option value=".org">.org</option>
+</select>
 </div>
 
-<!-- عداد الدومينات -->
 <div id="domainCount">Loading domains...</div>
-
-<!-- بطاقات الدومينات -->
 <div id="domains"></div>
 
-<!-- About Us -->
 <section id="about">
-    <div class="about">
-        <h2>About Us</h2>
-        <p>DivinityPro is a professional domain reseller offering premium domains ready for brands and businesses worldwide. Trusted by domainers globally.</p>
-    </div>
+<div class="about">
+<h2>About Us</h2>
+<p>DivinityPro is a professional domain reseller offering premium domains ready for brands and businesses worldwide.</p>
+</div>
 </section>
 
-<!-- Contact -->
 <section id="contact">
-    <div class="contact">
-        <h2>Contact Us</h2>
-        <p>Email: info@divinitypro.com</p>
-        <p>Phone: +1 234 567 890</p>
-    </div>
+<div class="contact">
+<h2>Contact Us</h2>
+<p>Email: info@divinitypro.com</p>
+<p>Phone: +1 234 567 890</p>
+</div>
 </section>
 
 <script>
-// سلايدر تلقائي
-let slides = document.querySelectorAll('.slide');
-let currentSlide = 0;
-setInterval(() => {
-    slides[currentSlide].classList.remove('active');
-    currentSlide = (currentSlide + 1) % slides.length;
-    slides[currentSlide].classList.add('active');
-},4000);
 
-// جلب الدومينات من Google Sheets
-let allDomains = [];
+/* ===== Slider Auto ===== */
+
+let slides=document.querySelectorAll('.slide');
+let currentSlide=0;
+
+setInterval(()=>{
+slides[currentSlide].classList.remove('active');
+currentSlide=(currentSlide+1)%slides.length;
+slides[currentSlide].classList.add('active');
+},5000);
+
+/* ===== Google Sheets Domains ===== */
+
+let allDomains=[];
+
 fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vRFLTWddJjWfI0WG0HZp4uOmxobQ6Tfzw4WiheRdAiwkh0ywEdDma7MQSznkp9FCSCcRLfTT0KTbyfw/pub?output=csv')
-.then(res => res.text())
-.then(text => {
-    let rows = text.split(/\r?\n/);
-    allDomains = rows.map(row => row.trim()).filter(row => row !== "" && row.toLowerCase() !== "name");
-    showDomains(allDomains);
-    document.getElementById('domainCount').innerText = `Available Domains: ${allDomains.length}`;
+.then(res=>res.text())
+.then(text=>{
+let rows=text.split(/\r?\n/);
+allDomains=rows.map(r=>r.trim()).filter(r=>r!=="" && r.toLowerCase()!=="name");
+showDomains(allDomains);
+document.getElementById('domainCount').innerText=`Available Domains: ${allDomains.length}`;
 });
 
-// عرض الدومينات
 function showDomains(domains){
-    let container = document.getElementById('domains');
-    let html = '';
-    domains.forEach(domain => {
-        html += `<div class="card">
-            <div class="domain">${domain}</div>
-            <a href="https://www.godaddy.com/domainsearch/find?domainToCheck=${domain}" target="_blank">
-                <button>Check & Buy</button>
-            </a>
-        </div>`;
-    });
-    container.innerHTML = html;
+let html='';
+domains.forEach(domain=>{
+html+=`
+<div class="card">
+<div class="domain">${domain}</div>
+<a href="https://www.godaddy.com/domainsearch/find?domainToCheck=${domain}" target="_blank">
+<button>Check & Buy</button>
+</a>
+</div>`;
+});
+document.getElementById('domains').innerHTML=html;
 }
 
-// البحث الحي وفلترة الامتداد
 document.getElementById('searchInput').addEventListener('input',filterDomains);
 document.getElementById('extensionFilter').addEventListener('change',filterDomains);
 
 function filterDomains(){
-    let search = document.getElementById('searchInput').value.toLowerCase();
-    let ext = document.getElementById('extensionFilter').value;
-    let filtered = allDomains.filter(d => d.toLowerCase().includes(search) && (ext==="" || d.endsWith(ext)));
-    showDomains(filtered);
-    document.getElementById('domainCount').innerText = `Available Domains: ${filtered.length}`;
+let search=document.getElementById('searchInput').value.toLowerCase();
+let ext=document.getElementById('extensionFilter').value;
+
+let filtered=allDomains.filter(d =>
+d.toLowerCase().includes(search) &&
+(ext==="" || d.endsWith(ext))
+);
+
+showDomains(filtered);
+document.getElementById('domainCount').innerText=`Available Domains: ${filtered.length}`;
 }
+
 </script>
 
 </body>
