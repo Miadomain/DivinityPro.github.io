@@ -3,128 +3,105 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DivinityPro - Premium Domains Marketplace</title>
+<title>DivinityPro - Premium Domains</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
 <style>
 
-/* ===== GENERAL ===== */
 body{
 margin:0;
 font-family:'Montserrat',sans-serif;
-background:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.85)),
-url('https://images.unsplash.com/photo-1518779578993-ec3579fee39e?auto=format&fit=crop&w=1600&q=80')
-center/cover no-repeat fixed;
+background:#0b0b0b;
 color:white;
 }
 
-a{text-decoration:none;color:inherit}
-
-/* ===== HEADER ===== */
+/* HEADER */
 header{
-display:flex;
-justify-content:space-between;
-align-items:center;
 padding:15px 5%;
 background:linear-gradient(90deg,#0d6efd,#6610f2);
-position:sticky;
-top:0;
-z-index:1000;
+font-weight:700;
 }
 
-header h1{margin:0}
-
-/* ===== SLIDER ===== */
-
-.slider{
-width:90%;
-margin:25px auto;
-height:500px;
-position:relative;
-overflow:hidden;
-border-radius:15px;
-box-shadow:0 10px 40px rgba(0,0,0,.8);
-}
-
-.slide{
-position:absolute;
-width:100%;
-height:100%;
-background-size:cover;
-background-position:center;
-opacity:0;
-transition:opacity 1s;
-}
-
-.slide.active{opacity:1}
-
-/* mobile slider */
-@media(max-width:768px){
-.slider{height:260px;}
-}
-
-/* ===== SEARCH ===== */
-.search-container{
-text-align:center;
-margin:30px;
-}
-
-.search-container input{
-padding:12px;
-width:260px;
-border-radius:6px;
-border:none;
-background:#1e1e1e;
-color:white;
-}
-
-/* ===== GRID ===== */
-
+/* GRID */
 #domains{
 width:90%;
-margin:auto;
+margin:40px auto;
 display:grid;
 grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
 gap:25px;
 }
 
-/* ===== DOMAIN CARD ===== */
-
 .card{
 background:#151515;
-border-radius:14px;
 padding:25px;
+border-radius:14px;
 text-align:center;
 cursor:pointer;
 transition:.35s;
-box-shadow:0 5px 25px rgba(0,0,0,.6);
 }
 
 .card:hover{
 transform:translateY(-10px);
-box-shadow:0 15px 45px rgba(255,215,0,.35);
+box-shadow:0 10px 40px rgba(255,215,0,.4);
 }
 
 .domain{
+color:#ffc107;
 font-size:20px;
 font-weight:700;
+}
+
+/* LANDING PAGE */
+
+.landing{
+display:flex;
+justify-content:center;
+align-items:center;
+height:90vh;
+text-align:center;
+flex-direction:column;
+background:
+linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.85)),
+url('https://images.unsplash.com/photo-1526378722484-bd91ca387e72?auto=format&fit=crop&w=1600&q=80')
+center/cover;
+}
+
+.big-domain{
+font-size:48px;
 color:#ffc107;
-word-break:break-word;
 margin-bottom:15px;
 }
 
-.buy-text{
-font-size:14px;
+.tag{
 opacity:.8;
+margin-bottom:25px;
 }
 
-#domainCount{
-text-align:center;
-margin:25px;
-font-size:20px;
-color:#ffc107;
+.buy{
+padding:15px 35px;
+font-size:18px;
+border:none;
+border-radius:10px;
+background:linear-gradient(90deg,#28a745,#20c997);
+color:white;
+cursor:pointer;
+transition:.3s;
+}
+
+.buy:hover{
+transform:scale(1.1);
+}
+
+.back{
+margin-top:25px;
+opacity:.7;
+cursor:pointer;
+}
+
+@media(max-width:768px){
+.big-domain{font-size:30px;}
 }
 
 </style>
@@ -132,101 +109,86 @@ color:#ffc107;
 
 <body>
 
-<header>
-<h1>DivinityPro</h1>
-</header>
+<header>DivinityPro Premium Domains</header>
 
-<!-- ===== PROFESSIONAL SLIDER ===== -->
-<div class="slider">
-<div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80')"></div>
-<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=1600&q=80')"></div>
-<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1526378722484-bd91ca387e72?auto=format&fit=crop&w=1600&q=80')"></div>
-</div>
-
-<!-- SEARCH -->
-<div class="search-container">
-<input type="text" id="searchInput" placeholder="Search domains...">
-</div>
-
-<div id="domainCount">Loading domains...</div>
-
-<div id="domains"></div>
+<div id="app"></div>
 
 <script>
 
-/* ===== SLIDER AUTO ===== */
-let slides=document.querySelectorAll('.slide');
-let currentSlide=0;
+const sheetURL='https://docs.google.com/spreadsheets/d/e/2PACX-1vRFLTWddJjWfI0WG0HZp4uOmxobQ6Tfzw4WiheRdAiwkh0ywEdDma7MQSznkp9FCSCcRLfTT0KTbyfw/pub?output=csv';
 
-setInterval(()=>{
-slides[currentSlide].classList.remove('active');
-currentSlide=(currentSlide+1)%slides.length;
-slides[currentSlide].classList.add('active');
-},4000);
+const params=new URLSearchParams(window.location.search);
+const selectedDomain=params.get("domain");
 
+/* LOAD DOMAINS */
 
-/* ===== LOAD DOMAINS ===== */
-
-let allDomains=[];
-
-fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vRFLTWddJjWfI0WG0HZp4uOmxobQ6Tfzw4WiheRdAiwkh0ywEdDma7MQSznkp9FCSCcRLfTT0KTbyfw/pub?output=csv')
+fetch(sheetURL)
 .then(res=>res.text())
 .then(text=>{
 
-let rows=text.split(/\r?\n/);
-
-allDomains=rows
+let domains=text.split(/\r?\n/)
 .map(r=>r.trim())
 .filter(r=>r!=="" && r.toLowerCase()!=="name");
 
-showDomains(allDomains);
-
-document.getElementById('domainCount')
-.innerText=`Available Domains: ${allDomains.length}`;
-
-});
-
-/* ===== SHOW DOMAINS ===== */
-
-function showDomains(list){
-
-let html='';
-
-list.forEach(domain=>{
-
-html+=`
-<div class="card"
-onclick="window.open('https://www.godaddy.com/domainsearch/find?domainToCheck=${domain}','_blank')">
-
-<div class="domain">${domain}</div>
-
-<div class="buy-text">
-<i class="fa-solid fa-cart-shopping"></i>
- Buy securely on GoDaddy
-</div>
-
-</div>
-`;
-
-});
-
-document.getElementById('domains').innerHTML=html;
+if(selectedDomain){
+showLanding(selectedDomain);
+}else{
+showHomepage(domains);
 }
 
-/* ===== SEARCH ===== */
-
-document.getElementById('searchInput').addEventListener('input',function(){
-
-let value=this.value.toLowerCase();
-
-let filtered=allDomains.filter(d=>d.toLowerCase().includes(value));
-
-showDomains(filtered);
-
-document.getElementById('domainCount')
-.innerText=`Available Domains: ${filtered.length}`;
-
 });
+
+/* HOMEPAGE */
+
+function showHomepage(domains){
+
+let html='<div id="domains">';
+
+domains.forEach(d=>{
+html+=`
+<div class="card"
+onclick="window.location='?domain=${d}'">
+<div class="domain">${d}</div>
+</div>`;
+});
+
+html+='</div>';
+
+document.getElementById('app').innerHTML=html;
+}
+
+/* LANDING PAGE */
+
+function showLanding(domain){
+
+document.title=domain+" | DivinityPro";
+
+document.getElementById('app').innerHTML=`
+
+<div class="landing">
+
+<div class="big-domain">${domain}</div>
+
+<div class="tag">
+Premium Brandable Domain Name
+</div>
+
+<button class="buy"
+onclick="window.open('https://www.godaddy.com/domainsearch/find?domainToCheck=${domain}','_blank')">
+
+<i class="fa-solid fa-cart-shopping"></i>
+ Buy Securely on GoDaddy
+
+</button>
+
+<div class="back" onclick="window.location='/'">
+← Back to marketplace
+</div>
+
+</div>
+
+`;
+}
 
 </script>
 
