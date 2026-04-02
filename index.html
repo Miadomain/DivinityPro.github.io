@@ -10,183 +10,189 @@
 
 <style>
 body{
-margin:0;
-font-family:'Poppins',sans-serif;
-background:#0b0b0b;
-color:white;
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:#0b0b0b;
+  color:white;
 }
 
 /* HEADER */
 header{
-padding:15px 5%;
-background:linear-gradient(90deg,#00f0ff,#8a2eff);
-display:flex;
-justify-content:space-between;
-align-items:center;
-backdrop-filter: blur(10px);
+  padding:15px 5%;
+  background:linear-gradient(90deg,#00f0ff,#8a2eff);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  backdrop-filter: blur(10px);
 }
 
 .logo{
-font-size:28px;
-font-weight:700;
-background:linear-gradient(90deg,#00f0ff,#8a2eff);
--webkit-background-clip:text;
-color:transparent;
-animation:shine 3s infinite linear;
+  font-size:28px;
+  font-weight:700;
+  background:linear-gradient(90deg,#00f0ff,#8a2eff);
+  -webkit-background-clip:text;
+  color:transparent;
+  animation:shine 3s infinite linear;
 }
 
 @keyframes shine{
-0%{background-position:-200px;}
-100%{background-position:200px;}
+  0%{background-position:-200px;}
+  100%{background-position:200px;}
 }
 
 /* SLIDER */
 .slider{
-position:relative;
-height:400px;
-overflow:hidden;
-margin-top:20px;
-border-radius:20px;
+  position:relative;
+  height:400px;
+  overflow:hidden;
+  margin-top:20px;
+  border-radius:20px;
 }
 
 .slide{
-position:absolute;
-width:100%;
-height:100%;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-text-align:center;
-opacity:0;
-transition:1s;
-padding:20px;
-background-size:cover;
-background-position:center;
-border-radius:20px;
+  position:absolute;
+  width:100%;
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+  opacity:0;
+  transition:1s;
+  padding:20px;
+  background-size:cover;
+  background-position:center;
+  border-radius:20px;
 }
 
 .slide::after{
-content:'';
-position:absolute;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.5);
-top:0;
-left:0;
-border-radius:20px;
+  content:'';
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,.5);
+  top:0;
+  left:0;
+  border-radius:20px;
 }
 
 .slide-content{
-position:relative;
-z-index:2;
+  position:relative;
+  z-index:2;
 }
 
 .slide.active{opacity:1;}
 
 .slide h1{
-color:#00f0ff;
-text-shadow:0 0 20px #8a2eff;
+  color:#00f0ff;
+  text-shadow:0 0 20px #8a2eff;
+}
+
+.slide p{
+  color:#fff;
+  font-size:18px;
+  margin-top:10px;
 }
 
 .dots{
-position:absolute;
-bottom:10px;
-left:50%;
-transform:translateX(-50%);
-display:flex;
-gap:10px;
+  position:absolute;
+  bottom:15px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:10px;
 }
 
 .dot{
-width:12px;
-height:12px;
-background:#777;
-border-radius:50%;
-cursor:pointer;
-transition:.3s;
+  width:12px;
+  height:12px;
+  background:#777;
+  border-radius:50%;
+  cursor:pointer;
+  transition:.3s;
 }
 
 .dot.active{background:#00f0ff;}
 
 /* DOMAINS GRID */
 #domains{
-width:90%;
-margin:40px auto;
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-gap:25px;
+  width:90%;
+  margin:40px auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:25px;
 }
 
 .card{
-background:rgba(255,255,255,0.05);
-padding:25px;
-border-radius:14px;
-text-align:center;
-cursor:pointer;
-transition:.35s;
-backdrop-filter: blur(10px);
-box-shadow:0 0 20px rgba(0,255,255,0.2);
+  background:rgba(255,255,255,0.05);
+  padding:25px;
+  border-radius:14px;
+  text-align:center;
+  cursor:pointer;
+  transition:.35s;
+  backdrop-filter: blur(10px);
+  box-shadow:0 0 20px rgba(0,255,255,0.2);
 }
 
 .card:hover{
-transform:translateY(-10px) scale(1.03);
-box-shadow:0 0 30px rgba(0,255,255,0.6);
+  transform:translateY(-10px) scale(1.03);
+  box-shadow:0 0 30px rgba(0,255,255,0.6);
 }
 
 .domain{
-color:#00f0ff;
-font-size:20px;
-font-weight:700;
+  color:#00f0ff;
+  font-size:20px;
+  font-weight:700;
 }
 
 /* LANDING */
 .landing{
-display:flex;
-justify-content:center;
-align-items:center;
-height:90vh;
-flex-direction:column;
-text-align:center;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:90vh;
+  flex-direction:column;
+  text-align:center;
 }
 
 .big-domain{
-font-size:45px;
-color:#00f0ff;
-text-shadow:0 0 20px #8a2eff;
+  font-size:45px;
+  color:#00f0ff;
+  text-shadow:0 0 20px #8a2eff;
 }
 
 .viewer{
-color:#ff4d4d;
-margin-top:10px;
+  color:#ff4d4d;
+  margin-top:10px;
 }
 
 /* ACTIONS */
 .actions{
-margin-top:20px;
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-justify-content:center;
+  margin-top:20px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:center;
 }
 
 input{
-padding:10px;
-border-radius:8px;
-border:none;
-outline:none;
-background:rgba(255,255,255,0.1);
-color:white;
-backdrop-filter: blur(5px);
+  padding:10px;
+  border-radius:8px;
+  border:none;
+  outline:none;
+  background:rgba(255,255,255,0.1);
+  color:white;
+  backdrop-filter: blur(5px);
 }
 
 .btn{
-padding:12px 20px;
-border:none;
-border-radius:10px;
-cursor:pointer;
-font-weight:600;
-transition:.3s;
+  padding:12px 20px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+  transition:.3s;
 }
 
 .buy{background:#28a745;color:white;}
@@ -198,127 +204,127 @@ transition:.3s;
 
 /* ABOUT */
 .about{
-padding:50px 10%;
-background:rgba(255,255,255,0.02);
-text-align:center;
-border-radius:20px;
-margin:50px auto;
-backdrop-filter: blur(10px);
+  padding:50px 10%;
+  background:rgba(255,255,255,0.02);
+  text-align:center;
+  border-radius:20px;
+  margin:50px auto;
+  backdrop-filter: blur(10px);
 }
 
 .about h2{color:#00f0ff;}
 
 /* TRUST LOGOS */
 .trust{
-text-align:center;
-margin:50px auto;
+  text-align:center;
+  margin:50px auto;
 }
 
 .trust h3{color:#8a2eff;margin-bottom:20px;}
 
 .logos{
-display:flex;
-justify-content:center;
-gap:30px;
-flex-wrap:wrap;
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  flex-wrap:wrap;
 }
 
 .logos img{
-height:40px;
-filter:grayscale(1) brightness(1.5);
-opacity:.7;
-transition:.3s;
+  height:40px;
+  filter:grayscale(1) brightness(1.5);
+  opacity:.7;
+  transition:.3s;
 }
 
 .logos img:hover{
-filter:none;
-opacity:1;
-transform:scale(1.1);
+  filter:none;
+  opacity:1;
+  transform:scale(1.1);
 }
 
 /* FOOTER CTA */
 .footer{
-text-align:center;
-padding:60px 20px;
-background:#050505;
+  text-align:center;
+  padding:60px 20px;
+  background:#050505;
 }
 
 .footer h2{
-font-size:32px;
-background:linear-gradient(90deg,#00f0ff,#8a2eff);
--webkit-background-clip:text;
-color:transparent;
+  font-size:32px;
+  background:linear-gradient(90deg,#00f0ff,#8a2eff);
+  -webkit-background-clip:text;
+  color:transparent;
 }
 
 /* POPUP */
 .popup{
-position:fixed;
-bottom:20px;
-left:20px;
-background:#222;
-padding:15px;
-border-radius:10px;
-font-size:14px;
-display:none;
+  position:fixed;
+  bottom:20px;
+  left:20px;
+  background:#222;
+  padding:15px;
+  border-radius:10px;
+  font-size:14px;
+  display:none;
 }
-
 </style>
 </head>
 <body>
 
 <header>
-<div class="logo">DivinityPro</div>
+  <div class="logo">DivinityPro</div>
 </header>
 
-<div class="slider">
-  <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b')">
-    <div class="slide-content">
-      <h1>Premium Domain Investors</h1>
-      <p>Elite digital assets marketplace</p>
+<div id="app">
+  <div class="slider">
+    <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b')">
+      <div class="slide-content">
+        <h1>Premium Domain Investors</h1>
+        <p>Elite digital assets marketplace</p>
+      </div>
     </div>
-  </div>
 
-  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1519389950473-47ba0277781c')">
-    <div class="slide-content">
-      <h1>Secure & Trusted</h1>
-      <p>Transactions powered by GoDaddy</p>
+    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1519389950473-47ba0277781c')">
+      <div class="slide-content">
+        <h1>Secure & Trusted</h1>
+        <p>Transactions powered by GoDaddy</p>
+      </div>
     </div>
-  </div>
 
-  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1492724441997-5dc865305da7')">
-    <div class="slide-content">
-      <h1>Domainer Empire</h1>
-      <p>High-value brandable domains</p>
+    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1492724441997-5dc865305da7')">
+      <div class="slide-content">
+        <h1>Domainer Empire</h1>
+        <p>High-value brandable domains</p>
+      </div>
     </div>
-  </div>
 
-  <div class="dots"></div>
+    <div class="dots"></div>
+  </div>
 </div>
 
 <div id="domains"></div>
 
 <div class="about">
-<h2>About DivinityPro</h2>
-<p>We help investors acquire premium domain names with high resale value.</p>
-
-<div class="contact">
-📧 Email: contact@divinitypro.com <br>
-📞 Phone: 00218916073973
-</div>
+  <h2>About DivinityPro</h2>
+  <p>We help investors acquire premium domain names with high resale value.</p>
+  <div class="contact">
+    📧 Email: contact@divinitypro.com <br>
+    📞 Phone: 00218916073973
+  </div>
 </div>
 
 <div class="trust">
-<h3>Trusted & Verified Platforms</h3>
-<div class="logos">
-<img src="https://upload.wikimedia.org/wikipedia/commons/7/71/GoDaddy_logo_2018.svg" alt="GoDaddy">
-<img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Sedo_logo.svg" alt="Sedo">
-<img src="https://www.afternic.com/assets/images/logo-afternic.svg" alt="Afternic">
-<img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Atom_logo.svg" alt="Atom">
-</div>
+  <h3>Trusted & Verified Platforms</h3>
+  <div class="logos">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/GoDaddy_logo_2018.svg" alt="GoDaddy">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Sedo_logo.svg" alt="Sedo">
+    <img src="https://www.afternic.com/assets/images/logo-afternic.svg" alt="Afternic">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Atom_logo.svg" alt="Atom">
+  </div>
 </div>
 
 <div class="footer">
-<h2>Own The Internet Before Others Do</h2>
+  <h2>Own The Internet Before Others Do</h2>
 </div>
 
 <div class="popup" id="popup"></div>
@@ -333,86 +339,87 @@ const selectedDomain=params.get("domain");
 fetch(sheetURL)
 .then(res=>res.text())
 .then(text=>{
-let domains=text.split(/\r?\n/).map(r=>r.trim()).filter(r=>r!=="" && r.toLowerCase()!=="name");
+  let domains=text.split(/\r?\n/).map(r=>r.trim()).filter(r=>r!=="" && r.toLowerCase()!=="name");
 
-if(selectedDomain){
-showLanding(selectedDomain);
-}else{
-showHomepage(domains);
-fakeActivity(domains);
-}
+  if(selectedDomain){
+    showLanding(selectedDomain);
+  }else{
+    showHomepage(domains);
+    fakeActivity(domains);
+  }
 });
 
 /* HOMEPAGE */
 function showHomepage(domains){
-let html="";
-domains.forEach(d=>{
-html+=`
-<div class="card" onclick="window.location='?domain=${d}'">
-<div class="domain">${d}</div>
-</div>`;
-});
-document.getElementById('domains').innerHTML=html;
-initSlider();
+  let html="";
+  domains.forEach(d=>{
+    html+=`
+    <div class="card" onclick="window.location='?domain=${d}'">
+      <div class="domain">${d}</div>
+    </div>`;
+  });
+  document.getElementById('domains').innerHTML=html;
+  initSlider();
 }
 
 /* LANDING */
 function showLanding(domain){
-let viewers=Math.floor(Math.random()*10)+5;
-document.getElementById('app').innerHTML=`
-<div class="landing">
-<div class="big-domain">${domain}</div>
-<div class="viewer">🔥 ${viewers} investors viewing now</div>
-<div class="actions">
-<input id="offerPrice" placeholder="Enter your offer $" />
-<button class="btn offer" onclick="sendOffer('${domain}')">Make Offer</button>
-<button class="btn buy" onclick="window.open('https://www.godaddy.com/domainsearch/find?domainToCheck=${domain}')">Buy Now</button>
-<button class="btn whatsapp" onclick="window.open('https://wa.me/${WHATSAPP}?text=I want ${domain}')">Chat</button>
-</div>
-<div style="margin-top:20px;cursor:pointer" onclick="window.location='/'">← Back</div>
-</div>`;
+  let viewers=Math.floor(Math.random()*10)+5;
+  document.getElementById('app').innerHTML=`
+  <div class="landing">
+    <div class="big-domain">${domain}</div>
+    <div class="viewer">🔥 ${viewers} investors viewing now</div>
+    <div class="actions">
+      <input id="offerPrice" placeholder="Enter your offer $" />
+      <button class="btn offer" onclick="sendOffer('${domain}')">Make Offer</button>
+      <button class="btn buy" onclick="window.open('https://www.godaddy.com/domainsearch/find?domainToCheck=${domain}')">Buy Now</button>
+      <button class="btn whatsapp" onclick="window.open('https://wa.me/${WHATSAPP}?text=I want ${domain}')">Chat</button>
+    </div>
+    <div style="margin-top:20px;cursor:pointer" onclick="window.location='/'">← Back</div>
+  </div>`;
 }
 
 /* SEND OFFER */
 function sendOffer(domain){
-let price=document.getElementById('offerPrice').value;
-if(!price){alert("Enter your offer first"); return;}
-let message=`Hello, I want to buy ${domain}%0A💰 Offer: $${price}%0AIs it still available?`;
-window.open(`https://wa.me/${WHATSAPP}?text=${message}`);
+  let price=document.getElementById('offerPrice').value;
+  if(!price){alert("Enter your offer first"); return;}
+  let message=`Hello, I want to buy ${domain}%0A💰 Offer: $${price}%0AIs it still available?`;
+  window.open(`https://wa.me/${WHATSAPP}?text=${message}`);
 }
 
 /* SLIDER */
 function initSlider(){
-const slides=document.querySelectorAll('.slide');
-const dotsContainer=document.querySelector('.dots');
-let index=0;
-slides.forEach((_,i)=>{
-let dot=document.createElement('div');
-dot.classList.add('dot');
-if(i===0) dot.classList.add('active');
-dot.onclick=()=>{index=i; showSlide(index)};
-dotsContainer.appendChild(dot);
-});
-const dots=document.querySelectorAll('.dot');
-function showSlide(i){
-slides.forEach(s=>s.classList.remove('active'));
-dots.forEach(d=>d.classList.remove('active'));
-slides[i].classList.add('active');
-dots[i].classList.add('active');
-}
-setInterval(()=>{index=(index+1)%slides.length;showSlide(index);},4000);
+  const slides=document.querySelectorAll('.slide');
+  const dotsContainer=document.querySelector('.dots');
+  let index=0;
+  slides.forEach((_,i)=>{
+    let dot=document.createElement('div');
+    dot.classList.add('dot');
+    if(i===0) dot.classList.add('active');
+    dot.onclick=()=>{index=i; showSlide(index)};
+    dotsContainer.appendChild(dot);
+  });
+  const dots=document.querySelectorAll('.dot');
+  function showSlide(i){
+    slides.forEach(s=>s.classList.remove('active'));
+    dots.forEach(d=>d.classList.remove('active'));
+    slides[i].classList.add('active');
+    dots[i].classList.add('active');
+  }
+  setInterval(()=>{index=(index+1)%slides.length;showSlide(index);},4000);
 }
 
 /* FAKE ACTIVITY */
 function fakeActivity(domains){
-setInterval(()=>{
-let randomDomain=domains[Math.floor(Math.random()*domains.length)];
-let popup=document.getElementById('popup');
-popup.innerText=`Someone just made an offer on ${randomDomain}`;
-popup.style.display='block';
-setTimeout(()=>{popup.style.display='none';},3000);
-},5000);
+  setInterval(()=>{
+    let randomDomain=domains[Math.floor(Math.random()*domains.length)];
+    let popup=document.getElementById('popup');
+    popup.innerText=`Someone just made an offer on ${randomDomain}`;
+    popup.style.display='block';
+    setTimeout(()=>{popup.style.display='none';},3000);
+  },5000);
 }
 </script>
+
 </body>
 </html>
