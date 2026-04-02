@@ -27,8 +27,6 @@ justify-content:space-between;
 align-items:center;
 }
 
-/* LOGO GOLD */
-
 .logo{
 font-size:22px;
 font-weight:700;
@@ -47,7 +45,7 @@ animation:shine 3s infinite linear;
 
 .slider{
 position:relative;
-height:300px;
+height:320px;
 overflow:hidden;
 }
 
@@ -63,12 +61,30 @@ text-align:center;
 opacity:0;
 transition:1s;
 padding:20px;
+background-size:cover;
+background-position:center;
+}
+
+.slide::after{
+content:'';
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.6);
+top:0;
+left:0;
+}
+
+.slide-content{
+position:relative;
+z-index:2;
 }
 
 .slide.active{opacity:1;}
 
 .slide h1{
 color:#ffc107;
+text-shadow:0 0 20px rgba(255,193,7,.7);
 }
 
 .dots{
@@ -136,20 +152,32 @@ font-size:45px;
 color:#ffc107;
 }
 
-.buy{
-padding:15px 35px;
-margin-top:20px;
-border:none;
-border-radius:10px;
-background:#28a745;
-color:white;
-cursor:pointer;
+.viewer{
+color:#ff4d4d;
+margin-top:10px;
 }
 
-.viewer{
-margin-top:10px;
-color:#ff4d4d;
+/* BUTTONS */
+
+.actions{
+margin-top:20px;
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+justify-content:center;
 }
+
+.btn{
+padding:12px 25px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-weight:600;
+}
+
+.buy{background:#28a745;color:white;}
+.offer{background:#ffc107;color:black;}
+.whatsapp{background:#25D366;color:white;}
 
 /* ABOUT */
 
@@ -189,12 +217,13 @@ display:none;
 </header>
 
 <div id="app"></div>
-
 <div class="popup" id="popup"></div>
 
 <script>
 
 const sheetURL='https://docs.google.com/spreadsheets/d/e/2PACX-1vRFLTWddJjWfI0WG0HZp4uOmxobQ6Tfzw4WiheRdAiwkh0ywEdDma7MQSznkp9FCSCcRLfTT0KTbyfw/pub?output=csv';
+
+const WHATSAPP="218XXXXXXXX"; // ← ضع رقمك هنا
 
 const params=new URLSearchParams(window.location.search);
 const selectedDomain=params.get("domain");
@@ -224,19 +253,25 @@ let html=`
 
 <div class="slider">
 
-<div class="slide active">
-<h1>Premium Domains Marketplace</h1>
-<p>Hand-picked domains for investors & brands</p>
+<div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b')">
+<div class="slide-content">
+<h1>Premium Domain Investors</h1>
+<p>Join the elite digital asset marketplace</p>
+</div>
 </div>
 
-<div class="slide">
-<h1>Trusted & Secure</h1>
-<p>All purchases handled via GoDaddy</p>
+<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1519389950473-47ba0277781c')">
+<div class="slide-content">
+<h1>Trusted Marketplace</h1>
+<p>Secure deals powered by GoDaddy</p>
+</div>
 </div>
 
-<div class="slide">
-<h1>Level Domainer Expert</h1>
-<p>Advanced domain flipping & branding strategies</p>
+<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1492724441997-5dc865305da7')">
+<div class="slide-content">
+<h1>Domainer Empire</h1>
+<p>Advanced branding & flipping strategies</p>
+</div>
 </div>
 
 <div class="dots"></div>
@@ -256,8 +291,8 @@ html+=`
 html+=`</div>
 
 <div class="about">
-<h2>About Us</h2>
-<p>DivinityPro is a premium domain marketplace helping investors acquire high-value brandable domains.</p>
+<h2>About DivinityPro</h2>
+<p>We specialize in premium, brandable domains for serious investors and startups.</p>
 
 <div class="contact">
 📧 Email: your@email.com <br>
@@ -267,7 +302,6 @@ html+=`</div>
 `;
 
 document.getElementById('app').innerHTML=html;
-
 initSlider();
 }
 
@@ -275,7 +309,7 @@ initSlider();
 
 function showLanding(domain){
 
-let viewers=Math.floor(Math.random()*8)+3;
+let viewers=Math.floor(Math.random()*10)+5;
 
 document.getElementById('app').innerHTML=`
 
@@ -283,12 +317,26 @@ document.getElementById('app').innerHTML=`
 
 <div class="big-domain">${domain}</div>
 
-<div class="viewer">🔥 ${viewers} people viewing now</div>
+<div class="viewer">🔥 ${viewers} investors viewing now</div>
 
-<button class="buy"
+<div class="actions">
+
+<button class="btn buy"
 onclick="window.open('https://www.godaddy.com/domainsearch/find?domainToCheck=${domain}')">
-Buy on GoDaddy
+Buy Now
 </button>
+
+<button class="btn offer"
+onclick="makeOffer('${domain}')">
+Make Offer
+</button>
+
+<button class="btn whatsapp"
+onclick="window.open('https://wa.me/${WHATSAPP}?text=I want to buy ${domain}')">
+WhatsApp
+</button>
+
+</div>
 
 <div style="margin-top:20px;cursor:pointer" onclick="window.location='/'">
 ← Back
@@ -298,13 +346,21 @@ Buy on GoDaddy
 `;
 }
 
+/* OFFER */
+
+function makeOffer(domain){
+let price=prompt("Enter your offer for "+domain);
+if(price){
+alert("Offer submitted! We will contact you.");
+}
+}
+
 /* SLIDER */
 
 function initSlider(){
 
 const slides=document.querySelectorAll('.slide');
 const dotsContainer=document.querySelector('.dots');
-
 let index=0;
 
 slides.forEach((_,i)=>{
@@ -325,7 +381,6 @@ const dots=document.querySelectorAll('.dot');
 function showSlide(i){
 slides.forEach(s=>s.classList.remove('active'));
 dots.forEach(d=>d.classList.remove('active'));
-
 slides[i].classList.add('active');
 dots[i].classList.add('active');
 }
@@ -334,7 +389,6 @@ setInterval(()=>{
 index=(index+1)%slides.length;
 showSlide(index);
 },4000);
-
 }
 
 /* FAKE ACTIVITY */
@@ -342,19 +396,17 @@ showSlide(index);
 function fakeActivity(domains){
 
 setInterval(()=>{
-
 let randomDomain=domains[Math.floor(Math.random()*domains.length)];
 
 let popup=document.getElementById('popup');
-popup.innerText=`Someone just viewed ${randomDomain}`;
+popup.innerText=`Someone just made an offer on ${randomDomain}`;
 popup.style.display='block';
 
 setTimeout(()=>{
 popup.style.display='none';
 },3000);
 
-},6000);
-
+},5000);
 }
 
 </script>
