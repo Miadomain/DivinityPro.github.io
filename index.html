@@ -157,18 +157,25 @@ color:#ff4d4d;
 margin-top:10px;
 }
 
-/* BUTTONS */
+/* ACTIONS */
 
 .actions{
 margin-top:20px;
 display:flex;
-gap:15px;
+gap:10px;
 flex-wrap:wrap;
 justify-content:center;
 }
 
+input{
+padding:10px;
+border-radius:8px;
+border:none;
+outline:none;
+}
+
 .btn{
-padding:12px 25px;
+padding:12px 20px;
 border:none;
 border-radius:10px;
 cursor:pointer;
@@ -223,7 +230,7 @@ display:none;
 
 const sheetURL='https://docs.google.com/spreadsheets/d/e/2PACX-1vRFLTWddJjWfI0WG0HZp4uOmxobQ6Tfzw4WiheRdAiwkh0ywEdDma7MQSznkp9FCSCcRLfTT0KTbyfw/pub?output=csv';
 
-const WHATSAPP="218916073973"; // ← ضع رقمك هنا
+const WHATSAPP="218916073973";
 
 const params=new URLSearchParams(window.location.search);
 const selectedDomain=params.get("domain");
@@ -256,21 +263,21 @@ let html=`
 <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b')">
 <div class="slide-content">
 <h1>Premium Domain Investors</h1>
-<p>Join the elite digital asset marketplace</p>
+<p>Elite digital assets marketplace</p>
 </div>
 </div>
 
 <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1519389950473-47ba0277781c')">
 <div class="slide-content">
-<h1>Trusted Marketplace</h1>
-<p>Secure deals powered by GoDaddy</p>
+<h1>Secure & Trusted</h1>
+<p>Transactions powered by GoDaddy</p>
 </div>
 </div>
 
 <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1492724441997-5dc865305da7')">
 <div class="slide-content">
 <h1>Domainer Empire</h1>
-<p>Advanced branding & flipping strategies</p>
+<p>High-value brandable domains</p>
 </div>
 </div>
 
@@ -292,16 +299,17 @@ html+=`</div>
 
 <div class="about">
 <h2>About DivinityPro</h2>
-<p>We specialize in premium, brandable domains for serious investors and startups.</p>
+<p>We help investors acquire premium domain names with high resale value.</p>
 
 <div class="contact">
 📧 Email: contact.divinitypro.com <br>
-📞 Phone: +218916073973
+📞 Phone: 00218916073973
 </div>
 </div>
 `;
 
 document.getElementById('app').innerHTML=html;
+
 initSlider();
 }
 
@@ -321,19 +329,20 @@ document.getElementById('app').innerHTML=`
 
 <div class="actions">
 
+<input id="offerPrice" placeholder="Enter your offer $" />
+
+<button class="btn offer" onclick="sendOffer('${domain}')">
+Make Offer
+</button>
+
 <button class="btn buy"
 onclick="window.open('https://www.godaddy.com/domainsearch/find?domainToCheck=${domain}')">
 Buy Now
 </button>
 
-<button class="btn offer"
-onclick="makeOffer('${domain}')">
-Make Offer
-</button>
-
 <button class="btn whatsapp"
-onclick="window.open('https://wa.me/${WHATSAPP}?text=I want to buy ${domain}')">
-WhatsApp
+onclick="window.open('https://wa.me/${WHATSAPP}?text=I want ${domain}')">
+Chat
 </button>
 
 </div>
@@ -346,13 +355,21 @@ WhatsApp
 `;
 }
 
-/* OFFER */
+/* SEND OFFER TO WHATSAPP */
 
-function makeOffer(domain){
-let price=prompt("Enter your offer for "+domain);
-if(price){
-alert("Offer submitted! We will contact you.");
+function sendOffer(domain){
+
+let price=document.getElementById('offerPrice').value;
+
+if(!price){
+alert("Enter your offer first");
+return;
 }
+
+let message = `Hello, I want to buy ${domain}%0A💰 Offer: $${price}%0AIs it still available?`;
+
+window.open(`https://wa.me/${WHATSAPP}?text=${message}`);
+
 }
 
 /* SLIDER */
