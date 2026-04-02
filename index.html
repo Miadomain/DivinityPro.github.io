@@ -3,49 +3,50 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DivinityPro - Premium Domains</title>
+<title>DivinityPro - Elite Domains</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
 <style>
 
 body{
 margin:0;
-font-family:'Montserrat',sans-serif;
-background:#0b0b0b;
+font-family:'Poppins',sans-serif;
+background:radial-gradient(circle at top,#0a0f2c,#000);
 color:white;
+overflow-x:hidden;
 }
 
 /* HEADER */
-
 header{
-padding:15px 5%;
-background:linear-gradient(90deg,#0d6efd,#6610f2);
+padding:18px 6%;
 display:flex;
 justify-content:space-between;
 align-items:center;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
 .logo{
-font-size:22px;
+font-size:24px;
 font-weight:700;
-background:linear-gradient(90deg,#ffd700,#fff,#ffd700);
+background:linear-gradient(90deg,#00f0ff,#8a2eff,#00f0ff);
 -webkit-background-clip:text;
 color:transparent;
-animation:shine 3s infinite linear;
+animation:glowMove 5s linear infinite;
 }
 
-@keyframes shine{
-0%{background-position:-200px;}
-100%{background-position:200px;}
+@keyframes glowMove{
+0%{background-position:0%}
+100%{background-position:200%}
 }
 
 /* SLIDER */
-
 .slider{
 position:relative;
-height:320px;
+height:340px;
 overflow:hidden;
 }
 
@@ -70,7 +71,7 @@ content:'';
 position:absolute;
 width:100%;
 height:100%;
-background:rgba(0,0,0,.6);
+background:linear-gradient(180deg,rgba(0,0,0,.4),#000);
 top:0;
 left:0;
 }
@@ -83,13 +84,20 @@ z-index:2;
 .slide.active{opacity:1;}
 
 .slide h1{
-color:#ffc107;
-text-shadow:0 0 20px rgba(255,193,7,.7);
+font-size:34px;
+background:linear-gradient(90deg,#00f0ff,#8a2eff);
+-webkit-background-clip:text;
+color:transparent;
+text-shadow:0 0 25px rgba(0,240,255,.4);
+}
+
+.slide p{
+opacity:.8;
 }
 
 .dots{
 position:absolute;
-bottom:10px;
+bottom:15px;
 left:50%;
 transform:translateX(-50%);
 display:flex;
@@ -97,47 +105,54 @@ gap:10px;
 }
 
 .dot{
-width:10px;
-height:10px;
-background:#777;
+width:12px;
+height:12px;
+background:#444;
 border-radius:50%;
 cursor:pointer;
+transition:.3s;
 }
 
-.dot.active{background:#ffc107;}
+.dot.active{
+background:#00f0ff;
+box-shadow:0 0 10px #00f0ff;
+}
 
 /* GRID */
-
 #domains{
 width:90%;
-margin:40px auto;
+margin:50px auto;
 display:grid;
 grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
 gap:25px;
 }
 
 .card{
-background:#151515;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
 padding:25px;
-border-radius:14px;
+border-radius:18px;
 text-align:center;
 cursor:pointer;
 transition:.35s;
+backdrop-filter:blur(10px);
 }
 
 .card:hover{
-transform:translateY(-10px);
-box-shadow:0 10px 40px rgba(255,215,0,.4);
+transform:translateY(-12px) scale(1.02);
+box-shadow:0 0 25px rgba(0,240,255,.3);
+border:1px solid rgba(0,240,255,.5);
 }
 
 .domain{
-color:#ffc107;
 font-size:20px;
-font-weight:700;
+font-weight:600;
+background:linear-gradient(90deg,#00f0ff,#8a2eff);
+-webkit-background-clip:text;
+color:transparent;
 }
 
 /* LANDING */
-
 .landing{
 display:flex;
 justify-content:center;
@@ -148,70 +163,97 @@ text-align:center;
 }
 
 .big-domain{
-font-size:45px;
-color:#ffc107;
+font-size:50px;
+background:linear-gradient(90deg,#00f0ff,#8a2eff);
+-webkit-background-clip:text;
+color:transparent;
+text-shadow:0 0 30px rgba(0,240,255,.4);
 }
 
 .viewer{
-color:#ff4d4d;
-margin-top:10px;
+color:#ff3c3c;
+margin-top:12px;
 }
 
 /* ACTIONS */
-
 .actions{
-margin-top:20px;
+margin-top:25px;
 display:flex;
-gap:10px;
+gap:12px;
 flex-wrap:wrap;
 justify-content:center;
 }
 
 input{
-padding:10px;
-border-radius:8px;
+padding:12px;
+border-radius:10px;
 border:none;
 outline:none;
+background:#111;
+color:white;
+border:1px solid rgba(255,255,255,0.1);
 }
 
 .btn{
-padding:12px 20px;
+padding:12px 22px;
 border:none;
-border-radius:10px;
+border-radius:12px;
 cursor:pointer;
 font-weight:600;
+transition:.3s;
 }
 
-.buy{background:#28a745;color:white;}
-.offer{background:#ffc107;color:black;}
-.whatsapp{background:#25D366;color:white;}
+.buy{
+background:linear-gradient(90deg,#00c853,#00e676);
+color:black;
+}
+
+.offer{
+background:linear-gradient(90deg,#ffcc00,#ff9100);
+color:black;
+}
+
+.whatsapp{
+background:linear-gradient(90deg,#25D366,#128C7E);
+color:white;
+}
+
+.btn:hover{
+transform:scale(1.05);
+box-shadow:0 0 20px rgba(255,255,255,0.2);
+}
 
 /* ABOUT */
-
 .about{
-padding:50px 10%;
-background:#111;
+padding:60px 10%;
+background:#050505;
 text-align:center;
+border-top:1px solid rgba(255,255,255,0.05);
 }
 
-.about h2{color:#ffc107;}
+.about h2{
+background:linear-gradient(90deg,#00f0ff,#8a2eff);
+-webkit-background-clip:text;
+color:transparent;
+}
 
 .contact{
 margin-top:20px;
-opacity:.8;
+opacity:.7;
 }
 
 /* POPUP */
-
 .popup{
 position:fixed;
 bottom:20px;
 left:20px;
-background:#222;
-padding:15px;
-border-radius:10px;
+background:rgba(0,0,0,0.8);
+padding:15px 20px;
+border-radius:12px;
 font-size:14px;
 display:none;
+border:1px solid rgba(0,240,255,0.3);
+box-shadow:0 0 15px rgba(0,240,255,0.2);
 }
 
 </style>
@@ -229,7 +271,6 @@ display:none;
 <script>
 
 const sheetURL='https://docs.google.com/spreadsheets/d/e/2PACX-1vRFLTWddJjWfI0WG0HZp4uOmxobQ6Tfzw4WiheRdAiwkh0ywEdDma7MQSznkp9FCSCcRLfTT0KTbyfw/pub?output=csv';
-
 const WHATSAPP="218916073973";
 
 const params=new URLSearchParams(window.location.search);
@@ -238,10 +279,7 @@ const selectedDomain=params.get("domain");
 fetch(sheetURL)
 .then(res=>res.text())
 .then(text=>{
-
-let domains=text.split(/\r?\n/)
-.map(r=>r.trim())
-.filter(r=>r!=="" && r.toLowerCase()!=="name");
+let domains=text.split(/\r?\n/).map(r=>r.trim()).filter(r=>r!=="" && r.toLowerCase()!=="name");
 
 if(selectedDomain){
 showLanding(selectedDomain);
@@ -249,48 +287,40 @@ showLanding(selectedDomain);
 showHomepage(domains);
 fakeActivity(domains);
 }
-
 });
 
-/* HOMEPAGE */
-
 function showHomepage(domains){
-
 let html=`
-
 <div class="slider">
 
-<div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b')">
+<div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1526378722484-bd91ca387e72')">
 <div class="slide-content">
-<h1>Premium Domain Investors</h1>
-<p>Elite digital assets marketplace</p>
+<h1>Elite Domain Market</h1>
+<p>Luxury digital assets for serious investors</p>
 </div>
 </div>
 
-<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1519389950473-47ba0277781c')">
+<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d')">
 <div class="slide-content">
-<h1>Secure & Trusted</h1>
-<p>Transactions powered by GoDaddy</p>
+<h1>High Value Domains</h1>
+<p>Secure deals via GoDaddy</p>
 </div>
 </div>
 
-<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1492724441997-5dc865305da7')">
+<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1518779578993-ec3579fee39f')">
 <div class="slide-content">
 <h1>Domainer Empire</h1>
-<p>High-value brandable domains</p>
+<p>Own the internet</p>
 </div>
 </div>
 
 <div class="dots"></div>
-
 </div>
 
-<div id="domains">
-`;
+<div id="domains">`;
 
 domains.forEach(d=>{
-html+=`
-<div class="card" onclick="window.location='?domain=${d}'">
+html+=`<div class="card" onclick="window.location='?domain=${d}'">
 <div class="domain">${d}</div>
 </div>`;
 });
@@ -299,83 +329,39 @@ html+=`</div>
 
 <div class="about">
 <h2>About DivinityPro</h2>
-<p>We help investors acquire premium domain names with high resale value.</p>
-
-<div class="contact">
-📧 Email: contact@divinitypro.com <br>
-📞 Phone: 00218916073973
-</div>
-</div>
-`;
+<p>We specialize in premium domain investments with maximum ROI potential.</p>
+<div class="contact">📧 contact@divinitypro.com<br>📞 00218916073973</div>
+</div>`;
 
 document.getElementById('app').innerHTML=html;
-
 initSlider();
 }
 
-/* LANDING */
-
 function showLanding(domain){
-
 let viewers=Math.floor(Math.random()*10)+5;
 
 document.getElementById('app').innerHTML=`
-
 <div class="landing">
-
 <div class="big-domain">${domain}</div>
-
-<div class="viewer">🔥 ${viewers} investors viewing now</div>
-
+<div class="viewer">🔥 ${viewers} investors viewing</div>
 <div class="actions">
-
-<input id="offerPrice" placeholder="Enter your offer $" />
-
-<button class="btn offer" onclick="sendOffer('${domain}')">
-Make Offer
-</button>
-
-<button class="btn buy"
-onclick="window.open('https://www.godaddy.com/domainsearch/find?domainToCheck=${domain}')">
-Buy Now
-</button>
-
-<button class="btn whatsapp"
-onclick="window.open('https://wa.me/${WHATSAPP}?text=I want ${domain}')">
-Chat
-</button>
-
+<input id="offerPrice" placeholder="Enter offer $" />
+<button class="btn offer" onclick="sendOffer('${domain}')">Make Offer</button>
+<button class="btn buy" onclick="window.open('https://www.godaddy.com/domainsearch/find?domainToCheck=${domain}')">Buy Now</button>
+<button class="btn whatsapp" onclick="window.open('https://wa.me/${WHATSAPP}?text=I want ${domain}')">Chat</button>
 </div>
-
-<div style="margin-top:20px;cursor:pointer" onclick="window.location='/'">
-← Back
-</div>
-
-</div>
-`;
+<div style="margin-top:25px;cursor:pointer" onclick="window.location='/'">← Back</div>
+</div>`;
 }
-
-/* SEND OFFER TO WHATSAPP */
 
 function sendOffer(domain){
-
 let price=document.getElementById('offerPrice').value;
-
-if(!price){
-alert("Enter your offer first");
-return;
+if(!price){alert("Enter your offer first");return;}
+let msg=`Hello, I want ${domain}%0AOffer: $${price}`;
+window.open(`https://wa.me/${WHATSAPP}?text=${msg}`);
 }
-
-let message = `Hello, I want to buy ${domain}%0A💰 Offer: $${price}%0AIs it still available?`;
-
-window.open(`https://wa.me/${WHATSAPP}?text=${message}`);
-
-}
-
-/* SLIDER */
 
 function initSlider(){
-
 const slides=document.querySelectorAll('.slide');
 const dotsContainer=document.querySelector('.dots');
 let index=0;
@@ -384,12 +370,7 @@ slides.forEach((_,i)=>{
 let dot=document.createElement('div');
 dot.classList.add('dot');
 if(i===0) dot.classList.add('active');
-
-dot.onclick=()=>{
-index=i;
-showSlide(index);
-};
-
+dot.onclick=()=>{index=i;showSlide(index);};
 dotsContainer.appendChild(dot);
 });
 
@@ -408,21 +389,13 @@ showSlide(index);
 },4000);
 }
 
-/* FAKE ACTIVITY */
-
 function fakeActivity(domains){
-
 setInterval(()=>{
-let randomDomain=domains[Math.floor(Math.random()*domains.length)];
-
+let d=domains[Math.floor(Math.random()*domains.length)];
 let popup=document.getElementById('popup');
-popup.innerText=`Someone just made an offer on ${randomDomain}`;
+popup.innerText=`Someone made offer on ${d}`;
 popup.style.display='block';
-
-setTimeout(()=>{
-popup.style.display='none';
-},3000);
-
+setTimeout(()=>{popup.style.display='none';},3000);
 },5000);
 }
 
