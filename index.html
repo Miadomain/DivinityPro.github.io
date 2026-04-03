@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>DivinityPro - Elite Domains</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
@@ -11,13 +10,11 @@
 
 <style>
 
-/* BODY */
 body{
 margin:0;
 font-family:'Poppins',sans-serif;
 background:radial-gradient(circle at top,#0a0f2c,#000);
 color:white;
-overflow-x:hidden;
 }
 
 /* HEADER */
@@ -28,13 +25,202 @@ justify-content:space-between;
 align-items:center;
 background:rgba(0,0,0,0.6);
 backdrop-filter:blur(10px);
-border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
 .logo{
 font-size:24px;
 font-weight:700;
 background:linear-gradient(90deg,#00f0ff,#8a2eff,#00f0ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+nav a{
+color:white;
+margin-left:25px;
+text-decoration:none;
+}
+
+/* HERO */
+.hero{
+text-align:center;
+padding:110px 20px;
+}
+
+.hero h1{
+font-size:48px;
+}
+
+/* DOMAINS */
+.domains{
+padding:60px 6%;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+
+.domain-card{
+background:#111;
+padding:25px;
+border-radius:14px;
+text-align:center;
+box-shadow:0 0 15px rgba(0,0,0,.5);
+transition:.3s;
+}
+
+.domain-card:hover{
+transform:translateY(-8px);
+}
+
+.buy-btn{
+margin-top:15px;
+display:inline-block;
+background:#25D366;
+color:white;
+padding:10px 18px;
+border-radius:30px;
+text-decoration:none;
+font-weight:600;
+}
+
+/* CONTACT */
+.contact{
+text-align:center;
+padding:80px 20px;
+}
+
+/* WHATSAPP BUTTON */
+.whatsapp-btn{
+display:inline-flex;
+align-items:center;
+gap:10px;
+background:#25D366;
+color:white;
+padding:14px 26px;
+border-radius:50px;
+text-decoration:none;
+font-weight:600;
+}
+
+/* FLOAT BUTTON */
+.whatsapp-float{
+position:fixed;
+bottom:25px;
+right:25px;
+width:65px;
+height:65px;
+background:#25D366;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+color:white;
+text-decoration:none;
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+0%{box-shadow:0 0 0 0 rgba(37,211,102,.7);}
+70%{box-shadow:0 0 0 20px rgba(37,211,102,0);}
+100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}
+}
+
+/* AGENT BOX */
+.agent-box{
+position:fixed;
+bottom:105px;
+right:25px;
+background:#111;
+padding:15px;
+border-radius:10px;
+font-size:14px;
+}
+
+.agent-status{
+color:#25D366;
+font-weight:600;
+}
+
+footer{
+text-align:center;
+padding:30px;
+opacity:.6;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">DivinityPro</div>
+<nav>
+<a href="#">Home</a>
+<a href="#domains">Domains</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+
+<section class="hero">
+<h1>Elite Premium Domains</h1>
+<p>Secure powerful brandable domains today.</p>
+</section>
+
+<!-- DOMAINS -->
+<section id="domains" class="domains">
+
+<div class="domain-card">
+<h3>kwzo.com</h3>
+<p>Premium Brandable Domain</p>
+<a class="buy-btn"
+href="https://wa.me/218916073973?text=I%20want%20to%20buy%20kwzo.com"
+target="_blank">Buy Now</a>
+</div>
+
+<div class="domain-card">
+<h3>divinitypro.com</h3>
+<p>Startup Ready Domain</p>
+<a class="buy-btn"
+href="https://wa.me/218916073973?text=I%20am%20interested%20in%20divinitypro.com"
+target="_blank">Buy Now</a>
+</div>
+
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+<h2>Contact Us</h2>
+<p>We reply in minutes on WhatsApp</p>
+
+<br>
+
+<a href="https://wa.me/218916073973?text=Hello%20DivinityPro"
+target="_blank"
+class="whatsapp-btn">
+<i class="fab fa-whatsapp"></i>
+Chat on WhatsApp
+</a>
+
+</section>
+
+<!-- AGENT ONLINE -->
+<div class="agent-box">
+<div class="agent-status">● Agent Online</div>
+We reply instantly
+</div>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/218916073973" target="_blank" class="whatsapp-float">
+<i class="fab fa-whatsapp"></i>
+</a>
+
+<footer>
+© 2026 DivinityPro — All Rights Reserved
+</footer>
+
+</body>
+</html>background:linear-gradient(90deg,#00f0ff,#8a2eff,#00f0ff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
