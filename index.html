@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>DivinityPro - Elite Domains</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
@@ -10,6 +11,7 @@
 
 <style>
 
+/* BODY */
 body{
 margin:0;
 font-family:'Poppins',sans-serif;
@@ -34,226 +36,101 @@ font-size:24px;
 font-weight:700;
 background:linear-gradient(90deg,#00f0ff,#8a2eff,#00f0ff);
 -webkit-background-clip:text;
-color:transparent;
-animation:glowMove 5s linear infinite;
+-webkit-text-fill-color:transparent;
 }
 
-@keyframes glowMove{
-0%{background-position:0%}
-100%{background-position:200%}
-}
-
-/* SLIDER */
-.slider{
-position:relative;
-height:340px;
-overflow:hidden;
-}
-
-.slide{
-position:absolute;
-width:100%;
-height:100%;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-text-align:center;
-opacity:0;
-transition:1s;
-padding:20px;
-background-size:cover;
-background-position:center;
-}
-
-.slide::after{
-content:'';
-position:absolute;
-width:100%;
-height:100%;
-background:linear-gradient(180deg,rgba(0,0,0,.4),#000);
-top:0;
-left:0;
-}
-
-.slide-content{
-position:relative;
-z-index:2;
-}
-
-.slide.active{opacity:1;}
-
-.slide h1{
-font-size:34px;
-background:linear-gradient(90deg,#00f0ff,#8a2eff);
--webkit-background-clip:text;
-color:transparent;
-text-shadow:0 0 25px rgba(0,240,255,.4);
-}
-
-.slide p{
-opacity:.8;
-}
-
-.dots{
-position:absolute;
-bottom:15px;
-left:50%;
-transform:translateX(-50%);
-display:flex;
-gap:10px;
-}
-
-.dot{
-width:12px;
-height:12px;
-background:#444;
-border-radius:50%;
-cursor:pointer;
+nav a{
+color:white;
+margin-left:25px;
+text-decoration:none;
+font-weight:500;
 transition:.3s;
 }
 
-.dot.active{
-background:#00f0ff;
-box-shadow:0 0 10px #00f0ff;
+nav a:hover{
+color:#00f0ff;
 }
 
-/* GRID */
-#domains{
-width:90%;
-margin:50px auto;
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-gap:25px;
-}
-
-.card{
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.08);
-padding:25px;
-border-radius:18px;
+/* HERO */
+.hero{
 text-align:center;
-cursor:pointer;
-transition:.35s;
-backdrop-filter:blur(10px);
+padding:120px 20px;
 }
 
-.card:hover{
-transform:translateY(-12px) scale(1.02);
-box-shadow:0 0 25px rgba(0,240,255,.3);
-border:1px solid rgba(0,240,255,.5);
+.hero h1{
+font-size:48px;
+margin-bottom:15px;
 }
 
-.domain{
-font-size:20px;
-font-weight:600;
-background:linear-gradient(90deg,#00f0ff,#8a2eff);
--webkit-background-clip:text;
-color:transparent;
-}
-
-/* LANDING */
-.landing{
-display:flex;
-justify-content:center;
-align-items:center;
-height:90vh;
-flex-direction:column;
-text-align:center;
-}
-
-.big-domain{
-font-size:50px;
-background:linear-gradient(90deg,#00f0ff,#8a2eff);
--webkit-background-clip:text;
-color:transparent;
-text-shadow:0 0 30px rgba(0,240,255,.4);
-}
-
-.viewer{
-color:#ff3c3c;
-margin-top:12px;
-}
-
-/* ACTIONS */
-.actions{
-margin-top:25px;
-display:flex;
-gap:12px;
-flex-wrap:wrap;
-justify-content:center;
-}
-
-input{
-padding:12px;
-border-radius:10px;
-border:none;
-outline:none;
-background:#111;
-color:white;
-border:1px solid rgba(255,255,255,0.1);
-}
-
-.btn{
-padding:12px 22px;
-border:none;
-border-radius:12px;
-cursor:pointer;
-font-weight:600;
-transition:.3s;
-}
-
-.buy{
-background:linear-gradient(90deg,#00c853,#00e676);
-color:black;
-}
-
-.offer{
-background:linear-gradient(90deg,#ffcc00,#ff9100);
-color:black;
-}
-
-.whatsapp{
-background:linear-gradient(90deg,#25D366,#128C7E);
-color:white;
-}
-
-.btn:hover{
-transform:scale(1.05);
-box-shadow:0 0 20px rgba(255,255,255,0.2);
-}
-
-/* ABOUT */
-.about{
-padding:60px 10%;
-background:#050505;
-text-align:center;
-border-top:1px solid rgba(255,255,255,0.05);
-}
-
-.about h2{
-background:linear-gradient(90deg,#00f0ff,#8a2eff);
--webkit-background-clip:text;
-color:transparent;
-}
-
+/* CONTACT */
 .contact{
-margin-top:20px;
-opacity:.7;
+text-align:center;
+padding:80px 20px;
 }
 
-/* POPUP */
-.popup{
+/* WHATSAPP BUTTON */
+.whatsapp-btn{
+display:inline-flex;
+align-items:center;
+gap:12px;
+background:#25D366;
+color:white;
+padding:14px 26px;
+border-radius:50px;
+font-size:18px;
+font-weight:600;
+text-decoration:none;
+box-shadow:0 0 15px rgba(37,211,102,0.6);
+transition:0.3s;
+}
+
+.whatsapp-btn i{
+font-size:24px;
+}
+
+.whatsapp-btn:hover{
+transform:translateY(-3px) scale(1.05);
+box-shadow:0 0 25px rgba(37,211,102,0.9);
+background:#1ebe5d;
+}
+
+/* FLOATING BUTTON */
+.whatsapp-float{
 position:fixed;
-bottom:20px;
-left:20px;
-background:rgba(0,0,0,0.8);
-padding:15px 20px;
-border-radius:12px;
-font-size:14px;
-display:none;
-border:1px solid rgba(0,240,255,0.3);
-box-shadow:0 0 15px rgba(0,240,255,0.2);
+bottom:25px;
+right:25px;
+width:65px;
+height:65px;
+background:#25D366;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:32px;
+color:white;
+text-decoration:none;
+box-shadow:0 0 20px rgba(37,211,102,.8);
+z-index:999;
+animation:pulse 2s infinite;
+transition:.3s;
+}
+
+.whatsapp-float:hover{
+transform:scale(1.1);
+background:#1ebe5d;
+}
+
+@keyframes pulse{
+0%{box-shadow:0 0 0 0 rgba(37,211,102,.7);}
+70%{box-shadow:0 0 0 20px rgba(37,211,102,0);}
+100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:30px;
+opacity:.6;
 }
 
 </style>
@@ -263,143 +140,40 @@ box-shadow:0 0 15px rgba(0,240,255,0.2);
 
 <header>
 <div class="logo">DivinityPro</div>
+
+<nav>
+<a href="#">Home</a>
+<a href="#">Domains</a>
+<a href="#contact">Contact</a>
+</nav>
 </header>
 
-<div id="app"></div>
-<div class="popup" id="popup"></div>
+<section class="hero">
+<h1>Elite Premium Domains</h1>
+<p>Discover powerful brandable domains for your next big project.</p>
+</section>
 
-<script>
+<section id="contact" class="contact">
+<h2>Contact Us</h2>
+<p>Chat instantly with us via WhatsApp</p>
 
-const sheetURL='https://docs.google.com/spreadsheets/d/e/2PACX-1vRFLTWddJjWfI0WG0HZp4uOmxobQ6Tfzw4WiheRdAiwkh0ywEdDma7MQSznkp9FCSCcRLfTT0KTbyfw/pub?output=csv';
-const WHATSAPP="218916073973";
+<br><br>
 
-const params=new URLSearchParams(window.location.search);
-const selectedDomain=params.get("domain");
+<a href="https://wa.me/218916073973" target="_blank" class="whatsapp-btn">
+<i class="fab fa-whatsapp"></i>
+Chat on WhatsApp
+</a>
 
-fetch(sheetURL)
-.then(res=>res.text())
-.then(text=>{
-let domains=text.split(/\r?\n/).map(r=>r.trim()).filter(r=>r!=="" && r.toLowerCase()!=="name");
+</section>
 
-if(selectedDomain){
-showLanding(selectedDomain);
-}else{
-showHomepage(domains);
-fakeActivity(domains);
-}
-});
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/218916073973" target="_blank" class="whatsapp-float">
+<i class="fab fa-whatsapp"></i>
+</a>
 
-function showHomepage(domains){
-let html=`
-<div class="slider">
-
-<div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1526378722484-bd91ca387e72')">
-<div class="slide-content">
-<h1>Elite Domain Market</h1>
-<p>Luxury digital assets for serious investors</p>
-</div>
-</div>
-
-<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d')">
-<div class="slide-content">
-<h1>High Value Domains</h1>
-<p>Secure deals via GoDaddy</p>
-</div>
-</div>
-
-<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1518779578993-ec3579fee39f')">
-<div class="slide-content">
-<h1>Domainer Empire</h1>
-<p>Own the internet</p>
-</div>
-</div>
-
-<div class="dots"></div>
-</div>
-
-<div id="domains">`;
-
-domains.forEach(d=>{
-html+=`<div class="card" onclick="window.location='?domain=${d}'">
-<div class="domain">${d}</div>
-</div>`;
-});
-
-html+=`</div>
-
-<div class="about">
-<h2>About DivinityPro</h2>
-<p>We specialize in premium domain investments with maximum ROI potential.</p>
-<div class="contact">📧 contact@divinitypro.com<br>📞 00218916073973</div>
-</div>`;
-
-document.getElementById('app').innerHTML=html;
-initSlider();
-}
-
-function showLanding(domain){
-let viewers=Math.floor(Math.random()*10)+5;
-
-document.getElementById('app').innerHTML=`
-<div class="landing">
-<div class="big-domain">${domain}</div>
-<div class="viewer">🔥 ${viewers} investors viewing</div>
-<div class="actions">
-<input id="offerPrice" placeholder="Enter offer $" />
-<button class="btn offer" onclick="sendOffer('${domain}')">Make Offer</button>
-<button class="btn buy" onclick="window.open('https://www.godaddy.com/domainsearch/find?domainToCheck=${domain}')">Buy Now</button>
-<button class="btn whatsapp" onclick="window.open('https://wa.me/${WHATSAPP}?text=I want ${domain}')">Chat</button>
-</div>
-<div style="margin-top:25px;cursor:pointer" onclick="window.location='/'">← Back</div>
-</div>`;
-}
-
-function sendOffer(domain){
-let price=document.getElementById('offerPrice').value;
-if(!price){alert("Enter your offer first");return;}
-let msg=`Hello, I want ${domain}%0AOffer: $${price}`;
-window.open(`https://wa.me/${WHATSAPP}?text=${msg}`);
-}
-
-function initSlider(){
-const slides=document.querySelectorAll('.slide');
-const dotsContainer=document.querySelector('.dots');
-let index=0;
-
-slides.forEach((_,i)=>{
-let dot=document.createElement('div');
-dot.classList.add('dot');
-if(i===0) dot.classList.add('active');
-dot.onclick=()=>{index=i;showSlide(index);};
-dotsContainer.appendChild(dot);
-});
-
-const dots=document.querySelectorAll('.dot');
-
-function showSlide(i){
-slides.forEach(s=>s.classList.remove('active'));
-dots.forEach(d=>d.classList.remove('active'));
-slides[i].classList.add('active');
-dots[i].classList.add('active');
-}
-
-setInterval(()=>{
-index=(index+1)%slides.length;
-showSlide(index);
-},4000);
-}
-
-function fakeActivity(domains){
-setInterval(()=>{
-let d=domains[Math.floor(Math.random()*domains.length)];
-let popup=document.getElementById('popup');
-popup.innerText=`Someone made offer on ${d}`;
-popup.style.display='block';
-setTimeout(()=>{popup.style.display='none';},3000);
-},5000);
-}
-
-</script>
+<footer>
+© 2026 DivinityPro — All Rights Reserved
+</footer>
 
 </body>
 </html>
