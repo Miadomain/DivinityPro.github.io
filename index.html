@@ -8,13 +8,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
-<style>
+<!-- XLSX Library -->
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
 
+<style>
 body{
 margin:0;
 font-family:'Poppins',sans-serif;
 background:radial-gradient(circle at top,#0a0f2c,#000);
 color:white;
+overflow-x:hidden;
 }
 
 /* HEADER */
@@ -25,6 +28,7 @@ justify-content:space-between;
 align-items:center;
 background:rgba(0,0,0,0.6);
 backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
 .logo{
@@ -35,6 +39,167 @@ background:linear-gradient(90deg,#00f0ff,#8a2eff,#00f0ff);
 -webkit-text-fill-color:transparent;
 }
 
+nav a{
+color:white;
+margin-left:25px;
+text-decoration:none;
+font-weight:500;
+transition:.3s;
+}
+
+nav a:hover{
+color:#00f0ff;
+}
+
+/* HERO */
+.hero{
+text-align:center;
+padding:120px 20px;
+}
+
+.hero h1{
+font-size:48px;
+margin-bottom:15px;
+}
+
+.hero p{
+opacity:.8;
+}
+
+/* DOMAINS */
+.domains{
+padding:60px 6%;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+
+.domain-card{
+background:#111;
+padding:25px;
+border-radius:14px;
+text-align:center;
+box-shadow:0 0 15px rgba(0,0,0,.5);
+transition:.3s;
+}
+
+.domain-card:hover{
+transform:translateY(-8px);
+}
+
+.buy-btn{
+margin-top:15px;
+display:inline-block;
+background:#25D366;
+color:white;
+padding:10px 18px;
+border-radius:30px;
+text-decoration:none;
+font-weight:600;
+}
+
+/* CONTACT */
+.contact{
+text-align:center;
+padding:80px 20px;
+}
+
+/* WHATSAPP FLOATING ICON */
+.whatsapp-float{
+position:fixed;
+right:20px;
+bottom:25px;
+width:60px;
+height:60px;
+background:#25D366;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+color:white;
+text-decoration:none;
+z-index:99999;
+box-shadow:0 0 15px rgba(37,211,102,.7);
+transition:.3s;
+}
+
+.whatsapp-float:hover{
+transform:scale(1.1);
+box-shadow:0 0 25px rgba(37,211,102,1);
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:30px;
+opacity:.6;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">DivinityPro</div>
+<nav>
+<a href="#">Home</a>
+<a href="#domains">Domains</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+
+<section class="hero">
+<h1>Elite Premium Domains</h1>
+<p>Secure powerful brandable domains today.</p>
+</section>
+
+<!-- DOMAINS -->
+<section id="domains" class="domains">
+<!-- سيتم إضافة الدومينات هنا من Excel -->
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+<h2>Contact Us</h2>
+<p>We reply quickly via WhatsApp</p>
+</section>
+
+<!-- WHATSAPP FLOATING ICON -->
+<a href="https://wa.me/218916073973" target="_blank" class="whatsapp-float">
+<i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- SCRIPT لتحميل Excel وعرض الدومينات + زر Buy GoDaddy -->
+<script>
+fetch('domains.xlsx')
+.then(res => res.arrayBuffer())
+.then(data => {
+  const workbook = XLSX.read(data);
+  const sheet = workbook.Sheets[workbook.SheetNames[0]];
+  const domains = XLSX.utils.sheet_to_json(sheet); // نقرأ العمود الأول فقط
+
+  const container = document.getElementById('domains');
+
+  domains.forEach(d => {
+    const domainName = d.domain; // تأكد أن العمود في Excel اسمه "domain"
+    const card = document.createElement('div');
+    card.className = 'domain-card';
+    card.innerHTML = `
+      <h3>${domainName}</h3>
+      <a class="buy-btn" href="https://www.godaddy.com/domainsearch/find?domainToCheck=${domainName}" target="_blank">Buy on GoDaddy</a>
+    `;
+    container.appendChild(card);
+  });
+});
+</script>
+
+<footer>
+© 2026 DivinityPro — All Rights Reserved
+</footer>
+
+</body>
+</html>
 nav a{
 color:white;
 margin-left:25px;
