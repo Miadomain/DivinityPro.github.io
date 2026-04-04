@@ -43,7 +43,8 @@ animation:glowMove 5s linear infinite;
 100%{background-position:200%}
 }
 
-/* SLIDER */
+/* ================= SLIDER HERO ================= */
+
 .slider{
 position:relative;
 height:340px;
@@ -76,11 +77,7 @@ top:0;
 left:0;
 }
 
-.slide-content{
-position:relative;
-z-index:2;
-}
-
+.slide-content{position:relative;z-index:2;}
 .slide.active{opacity:1;}
 
 .slide h1{
@@ -88,11 +85,6 @@ font-size:34px;
 background:linear-gradient(90deg,#00f0ff,#8a2eff);
 -webkit-background-clip:text;
 color:transparent;
-text-shadow:0 0 25px rgba(0,240,255,.4);
-}
-
-.slide p{
-opacity:.8;
 }
 
 .dots{
@@ -110,7 +102,6 @@ height:12px;
 background:#444;
 border-radius:50%;
 cursor:pointer;
-transition:.3s;
 }
 
 .dot.active{
@@ -118,7 +109,68 @@ background:#00f0ff;
 box-shadow:0 0 10px #00f0ff;
 }
 
-/* GRID */
+/* ================= DOMAIN RECTANGLE SLIDER ================= */
+
+.domain-slider{
+width:100%;
+overflow:hidden;
+padding:35px 0;
+background:linear-gradient(90deg,#020617,#050b25);
+border-top:1px solid rgba(255,255,255,.05);
+border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.domain-track{
+display:flex;
+gap:20px;
+width:max-content;
+animation:scrollDomains 30s linear infinite;
+}
+
+.domain-slider:hover .domain-track{
+animation-play-state:paused;
+}
+
+.domain-box{
+min-width:240px;
+height:80px;
+display:flex;
+align-items:center;
+gap:15px;
+padding:0 20px;
+border-radius:14px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(10px);
+cursor:pointer;
+transition:.3s;
+}
+
+.domain-box:hover{
+transform:scale(1.05);
+border:1px solid #00f0ff;
+box-shadow:0 0 20px rgba(0,240,255,.4);
+}
+
+.domain-icon{
+font-size:22px;
+color:#00f0ff;
+}
+
+.domain-name{
+font-weight:600;
+background:linear-gradient(90deg,#00f0ff,#8a2eff);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+@keyframes scrollDomains{
+from{transform:translateX(0);}
+to{transform:translateX(-50%);}
+}
+
+/* ================= GRID ================= */
+
 #domains{
 width:90%;
 margin:50px auto;
@@ -135,13 +187,11 @@ border-radius:18px;
 text-align:center;
 cursor:pointer;
 transition:.35s;
-backdrop-filter:blur(10px);
 }
 
 .card:hover{
-transform:translateY(-12px) scale(1.02);
+transform:translateY(-12px);
 box-shadow:0 0 25px rgba(0,240,255,.3);
-border:1px solid rgba(0,240,255,.5);
 }
 
 .domain{
@@ -167,31 +217,16 @@ font-size:50px;
 background:linear-gradient(90deg,#00f0ff,#8a2eff);
 -webkit-background-clip:text;
 color:transparent;
-text-shadow:0 0 30px rgba(0,240,255,.4);
 }
 
-.viewer{
-color:#ff3c3c;
-margin-top:12px;
-}
-
-/* ACTIONS */
-.actions{
-margin-top:25px;
-display:flex;
-gap:12px;
-flex-wrap:wrap;
-justify-content:center;
-}
+.actions{margin-top:25px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
 
 input{
 padding:12px;
 border-radius:10px;
 border:none;
-outline:none;
 background:#111;
 color:white;
-border:1px solid rgba(255,255,255,0.1);
 }
 
 .btn{
@@ -200,49 +235,18 @@ border:none;
 border-radius:12px;
 cursor:pointer;
 font-weight:600;
-transition:.3s;
 }
 
-.buy{
-background:linear-gradient(90deg,#00c853,#00e676);
-color:black;
-}
+.buy{background:#00e676;color:black;}
+.offer{background:#ffb300;color:black;}
+.whatsapp{background:#25D366;color:white;}
 
-.offer{
-background:linear-gradient(90deg,#ffcc00,#ff9100);
-color:black;
-}
-
-.whatsapp{
-background:linear-gradient(90deg,#25D366,#128C7E);
-color:white;
-}
-
-.btn:hover{
-transform:scale(1.05);
-box-shadow:0 0 20px rgba(255,255,255,0.2);
-}
-
-/* ABOUT */
 .about{
 padding:60px 10%;
 background:#050505;
 text-align:center;
-border-top:1px solid rgba(255,255,255,0.05);
 }
 
-.about h2{
-background:linear-gradient(90deg,#00f0ff,#8a2eff);
--webkit-background-clip:text;
-color:transparent;
-}
-
-.contact{
-margin-top:20px;
-opacity:.7;
-}
-
-/* POPUP */
 .popup{
 position:fixed;
 bottom:20px;
@@ -250,10 +254,7 @@ left:20px;
 background:rgba(0,0,0,0.8);
 padding:15px 20px;
 border-radius:12px;
-font-size:14px;
 display:none;
-border:1px solid rgba(0,240,255,0.3);
-box-shadow:0 0 15px rgba(0,240,255,0.2);
 }
 
 </style>
@@ -290,75 +291,79 @@ fakeActivity(domains);
 });
 
 function showHomepage(domains){
-let html=`
-<div class="slider">
 
+let html=`
+
+<div class="slider">
 <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1526378722484-bd91ca387e72')">
 <div class="slide-content">
 <h1>Elite Domain Market</h1>
-<p>Luxury digital assets for serious investors</p>
+<p>Luxury digital assets</p>
 </div>
 </div>
-
-<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d')">
-<div class="slide-content">
-<h1>High Value Domains</h1>
-<p>Secure deals via GoDaddy</p>
-</div>
-</div>
-
-<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1518779578993-ec3579fee39f')">
-<div class="slide-content">
-<h1>Domainer Empire</h1>
-<p>Own the internet</p>
-</div>
-</div>
-
 <div class="dots"></div>
 </div>
 
-<div id="domains">`;
+<!-- RECTANGLE DOMAIN SLIDER -->
+<div class="domain-slider">
+<div class="domain-track">
+`;
+
+domains.concat(domains).forEach(d=>{
+html+=`
+<div class="domain-box" onclick="window.location='?domain=${d}'">
+<i class="fa-solid fa-globe domain-icon"></i>
+<div class="domain-name">${d}</div>
+</div>`;
+});
+
+html+=`
+</div>
+</div>
+
+<div id="domains">
+`;
 
 domains.forEach(d=>{
-html+=`<div class="card" onclick="window.location='?domain=${d}'">
+html+=`
+<div class="card" onclick="window.location='?domain=${d}'">
 <div class="domain">${d}</div>
 </div>`;
 });
 
-html+=`</div>
+html+=`
+</div>
 
 <div class="about">
 <h2>About DivinityPro</h2>
-<p>We specialize in premium domain investments with maximum ROI potential.</p>
-<div class="contact">📧 contact@divinitypro.com<br>📞 00218916073973</div>
-</div>`;
+<p>Premium domain investment marketplace.</p>
+</div>
+`;
 
 document.getElementById('app').innerHTML=html;
 initSlider();
 }
 
 function showLanding(domain){
-let viewers=Math.floor(Math.random()*10)+5;
-
 document.getElementById('app').innerHTML=`
 <div class="landing">
 <div class="big-domain">${domain}</div>
-<div class="viewer">🔥 ${viewers} investors viewing</div>
+
 <div class="actions">
 <input id="offerPrice" placeholder="Enter offer $" />
 <button class="btn offer" onclick="sendOffer('${domain}')">Make Offer</button>
 <button class="btn buy" onclick="window.open('https://www.godaddy.com/domainsearch/find?domainToCheck=${domain}')">Buy Now</button>
 <button class="btn whatsapp" onclick="window.open('https://wa.me/${WHATSAPP}?text=I want ${domain}')">Chat</button>
 </div>
+
 <div style="margin-top:25px;cursor:pointer" onclick="window.location='/'">← Back</div>
 </div>`;
 }
 
 function sendOffer(domain){
 let price=document.getElementById('offerPrice').value;
-if(!price){alert("Enter your offer first");return;}
-let msg=`Hello, I want ${domain}%0AOffer: $${price}`;
-window.open(`https://wa.me/${WHATSAPP}?text=${msg}`);
+if(!price){alert("Enter your offer");return;}
+window.open(`https://wa.me/${WHATSAPP}?text=Offer ${domain} $${price}`);
 }
 
 function initSlider(){
@@ -370,7 +375,7 @@ slides.forEach((_,i)=>{
 let dot=document.createElement('div');
 dot.classList.add('dot');
 if(i===0) dot.classList.add('active');
-dot.onclick=()=>{index=i;showSlide(index);};
+dot.onclick=()=>showSlide(index=i);
 dotsContainer.appendChild(dot);
 });
 
@@ -395,7 +400,7 @@ let d=domains[Math.floor(Math.random()*domains.length)];
 let popup=document.getElementById('popup');
 popup.innerText=`Someone made offer on ${d}`;
 popup.style.display='block';
-setTimeout(()=>{popup.style.display='none';},3000);
+setTimeout(()=>popup.style.display='none',3000);
 },5000);
 }
 
