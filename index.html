@@ -131,8 +131,8 @@ width:90%;
 margin:20px auto;
 overflow:hidden;
 position:relative;
-height:60px;
-border-radius:30px;
+height:50px; /* تم تصغيره */
+border-radius:25px;
 border:2px solid rgba(255,255,255,0.1);
 background:rgba(0,0,0,0.3);
 }
@@ -140,11 +140,11 @@ background:rgba(0,0,0,0.3);
 .domain-track{
 display:flex;
 gap:15px;
-animation:slideDomains 25s linear infinite;
+animation:slideDomains 30s linear infinite; /* حركة أبطأ */
 }
 
 .domain-bubble{
-padding:10px 20px;
+padding:8px 18px; /* تصغير البابل */
 border-radius:50px;
 background:linear-gradient(135deg,#ff6ec4,#7873f5,#00ffff);
 color:white;
@@ -154,6 +154,7 @@ cursor:pointer;
 transition:.3s, box-shadow 0.5s;
 flex-shrink:0;
 animation:neonGlow 3s linear infinite alternate;
+font-size:14px; /* حجم أصغر */
 }
 
 .domain-bubble:hover{
