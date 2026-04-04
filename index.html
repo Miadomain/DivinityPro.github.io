@@ -15,7 +15,7 @@ font-family:'Poppins',sans-serif;
 background:radial-gradient(circle at top,#0a0f2c,#000);
 color:white;
 overflow-x:hidden;
-padding-bottom:100px;
+padding-bottom:130px; /* space for footer */
 }
 
 /* HEADER */
@@ -317,7 +317,7 @@ footer{
 position:fixed;
 bottom:0;
 width:100%;
-background:rgba(0,0,0,0.9);
+background:rgba(0,0,0,0.95);
 backdrop-filter:blur(10px);
 padding:15px 6%;
 display:flex;
@@ -327,6 +327,7 @@ border-top:2px solid rgba(0,240,255,0.3);
 color:white;
 z-index:999;
 font-size:14px;
+flex-wrap:wrap;
 }
 
 footer .logo-footer{
@@ -335,6 +336,20 @@ background:linear-gradient(90deg,#00f0ff,#ff00ff,#00ffff);
 -webkit-background-clip:text;
 color:transparent;
 animation:glowMove 5s linear infinite;
+}
+
+footer .contact-info{
+display:flex;
+gap:15px;
+align-items:center;
+flex-wrap:wrap;
+}
+
+footer .contact-info div{
+display:flex;
+align-items:center;
+gap:5px;
+color:white;
 }
 
 </style>
@@ -484,7 +499,11 @@ setTimeout(()=>{popup.style.display='none';},3000);
 
 <footer>
 <div class="logo-footer">DivinityPro</div>
-<div>📧 contact@divinitypro.com | 📞 +218 916 073 973</div>
+<div class="contact-info">
+<div><i class="fas fa-envelope"></i> contact@divinitypro.com</div>
+<div><i class="fas fa-phone"></i> +218 916 073 973</div>
+<div><i class="fas fa-globe"></i> www.divinitypro.com</div>
+</div>
 </footer>
 
 </body>
