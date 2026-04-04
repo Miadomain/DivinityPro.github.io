@@ -2,111 +2,88 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DivinityPro - Elite Domains</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>DivinityPro - Premium Domains</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-body{
+*{
 margin:0;
-font-family:'Poppins',sans-serif;
-background:radial-gradient(circle at top,#0a0f2c,#000);
+padding:0;
+box-sizing:border-box;
+font-family:Montserrat,sans-serif;
+}
+
+body{
+background:#020617;
 color:white;
 overflow-x:hidden;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
+
 header{
-padding:18px 6%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(10px);
-border-bottom:1px solid rgba(255,255,255,0.08);
+padding:15px 6%;
+background:#020617;
+border-bottom:1px solid rgba(255,255,255,.1);
+flex-wrap:wrap;
 }
 
 .logo{
-font-size:24px;
+font-size:22px;
 font-weight:700;
-background:linear-gradient(90deg,#00f0ff,#8a2eff,#00f0ff);
--webkit-background-clip:text;
-color:transparent;
-animation:glowMove 5s linear infinite;
+color:#00f0ff;
 }
 
-@keyframes glowMove{
-0%{background-position:0%}
-100%{background-position:200%}
+.contact{
+font-size:14px;
+opacity:.9;
 }
 
-/* ========= HERO SLIDER ========= */
+/* ================= HERO ================= */
 
-.slider{
-position:relative;
-height:340px;
-overflow:hidden;
-}
-
-.slide{
-position:absolute;
-width:100%;
-height:100%;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
+.hero{
 text-align:center;
-opacity:0;
-transition:1s;
-background-size:cover;
-background-position:center;
+padding:70px 20px;
 }
 
-.slide::after{
-content:'';
-position:absolute;
-width:100%;
-height:100%;
-background:linear-gradient(180deg,rgba(0,0,0,.4),#000);
-}
-
-.slide-content{position:relative;z-index:2;}
-.slide.active{opacity:1;}
-
-.slide h1{
-font-size:34px;
+.big-domain{
+font-size:clamp(28px,8vw,50px);
+word-break:break-word;
+line-height:1.2;
 background:linear-gradient(90deg,#00f0ff,#8a2eff);
 -webkit-background-clip:text;
 color:transparent;
 }
 
-.dots{
-position:absolute;
-bottom:15px;
-left:50%;
-transform:translateX(-50%);
-display:flex;
-gap:10px;
+.hero p{
+margin-top:15px;
+opacity:.8;
 }
 
-.dot{
-width:12px;
-height:12px;
-background:#444;
-border-radius:50%;
-cursor:pointer;
+/* ================= BUTTON ================= */
+
+.btn{
+display:inline-block;
+margin-top:25px;
+padding:14px 28px;
+border-radius:40px;
+text-decoration:none;
+color:white;
+background:linear-gradient(90deg,#00f0ff,#8a2eff);
+transition:.3s;
 }
 
-.dot.active{
-background:#00f0ff;
-box-shadow:0 0 10px #00f0ff;
+.btn:hover{
+transform:scale(1.07);
 }
 
-/* ========= DOMAIN MOVING SLIDER ========= */
+/* ================= SLIDER ================= */
 
 .domain-slider{
 width:100%;
@@ -125,14 +102,14 @@ border-bottom:1px solid rgba(138,46,255,.2);
 100%{background-position:0% 50%;}
 }
 
-.domain-track{
+.slider-track{
 display:flex;
 gap:18px;
 width:max-content;
 animation:scrollDomains 55s linear infinite;
 }
 
-.domain-slider:hover .domain-track{
+.domain-slider:hover .slider-track{
 animation-play-state:paused;
 }
 
@@ -141,13 +118,14 @@ from{transform:translateX(0);}
 to{transform:translateX(-50%);}
 }
 
+/* domain box */
+
 .domain-box{
 min-width:180px;
 height:60px;
 display:flex;
 align-items:center;
-gap:10px;
-padding:0 16px;
+justify-content:center;
 border-radius:14px;
 background:linear-gradient(135deg,
 rgba(0,240,255,.10),
@@ -163,119 +141,62 @@ transform:translateY(-3px) scale(1.05);
 box-shadow:0 0 18px rgba(0,240,255,.45);
 }
 
-.domain-icon{
-font-size:18px;
-color:#00f0ff;
-}
-
 .domain-name{
 font-size:14px;
 white-space:nowrap;
 overflow:hidden;
 text-overflow:ellipsis;
-max-width:120px;
-font-weight:600;
-background:linear-gradient(90deg,#00f0ff,#8a2eff);
--webkit-background-clip:text;
-color:transparent;
+max-width:140px;
 }
 
-/* GRID */
-#domains{
-width:90%;
-margin:50px auto;
+/* ================= DOMAINS GRID ================= */
+
+.domains{
+padding:60px 6%;
 display:grid;
-grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
 gap:25px;
 }
 
 .card{
-background:rgba(255,255,255,0.05);
+background:#071a52;
 padding:25px;
-border-radius:18px;
+border-radius:16px;
 text-align:center;
-cursor:pointer;
-transition:.35s;
+transition:.3s;
 }
 
 .card:hover{
-transform:translateY(-12px);
-box-shadow:0 0 25px rgba(0,240,255,.3);
+transform:translateY(-6px);
 }
 
-.domain{
-font-size:20px;
-font-weight:600;
-background:linear-gradient(90deg,#00f0ff,#8a2eff);
--webkit-background-clip:text;
-color:transparent;
+.card h3{
+margin-bottom:10px;
 }
 
-/* ========= LANDING ========= */
+/* ================= FOOTER ================= */
 
-.landing{
-display:flex;
-justify-content:center;
-align-items:center;
-height:90vh;
-flex-direction:column;
+footer{
 text-align:center;
+padding:25px;
+opacity:.7;
+border-top:1px solid rgba(255,255,255,.1);
 }
 
-.big-domain{
-font-size:clamp(28px,8vw,50px);
-word-break:break-word;
-padding:0 15px;
-line-height:1.2;
-background:linear-gradient(90deg,#00f0ff,#8a2eff);
--webkit-background-clip:text;
-color:transparent;
-}
+/* ================= MOBILE ================= */
 
-.actions{
-margin-top:25px;
-display:flex;
-gap:12px;
-flex-wrap:wrap;
-justify-content:center;
-}
+@media(max-width:600px){
 
-input{
-padding:12px;
-border-radius:10px;
-border:none;
-background:#111;
-color:white;
-}
-
-.btn{
-padding:12px 22px;
-border:none;
-border-radius:12px;
-cursor:pointer;
-font-weight:600;
-}
-
-.buy{background:#00e676;color:black;}
-.offer{background:#ffb300;color:black;}
-.whatsapp{background:#25D366;color:white;}
-
-.about{
-padding:60px 10%;
-background:#050505;
+.contact{
+width:100%;
 text-align:center;
+margin-top:8px;
 }
 
-.contact{margin-top:20px;opacity:.8;}
+.hero{
+padding:50px 15px;
+}
 
-.popup{
-position:fixed;
-bottom:20px;
-left:20px;
-background:rgba(0,0,0,0.8);
-padding:15px 20px;
-border-radius:12px;
-display:none;
 }
 
 </style>
@@ -283,147 +204,68 @@ display:none;
 
 <body>
 
+<!-- HEADER -->
+
 <header>
 <div class="logo">DivinityPro</div>
+<div class="contact">
+📞 +31 000 000 000 | ✉ contact@divinitypro.com
+</div>
 </header>
 
-<div id="app"></div>
-<div class="popup" id="popup"></div>
+<!-- HERO -->
 
-<script>
+<section class="hero">
+<h1 class="big-domain">Premium Domains Marketplace</h1>
+<p>Secure your brand with powerful digital assets.</p>
+<a href="https://wa.me/31000000000" class="btn">Contact Now</a>
+</section>
 
-const sheetURL='https://docs.google.com/spreadsheets/d/e/2PACX-1vRFLTWddJjWfI0WG0HZp4uOmxobQ6Tfzw4WiheRdAiwkh0ywEdDma7MQSznkp9FCSCcRLfTT0KTbyfw/pub?output=csv';
-const WHATSAPP="218916073973";
+<!-- SLIDER -->
 
-const params=new URLSearchParams(window.location.search);
-const selectedDomain=params.get("domain");
+<section class="domain-slider">
+<div class="slider-track">
 
-fetch(sheetURL)
-.then(res=>res.text())
-.then(text=>{
-let domains=text.split(/\r?\n/).map(r=>r.trim()).filter(r=>r!=="" && r.toLowerCase()!=="name");
+<div class="domain-box"><span class="domain-name">kwzo.com</span></div>
+<div class="domain-box"><span class="domain-name">divinitypro.com</span></div>
+<div class="domain-box"><span class="domain-name">ultrabrand.io</span></div>
+<div class="domain-box"><span class="domain-name">nextvision.ai</span></div>
+<div class="domain-box"><span class="domain-name">primehost.net</span></div>
 
-if(selectedDomain){
-showLanding(selectedDomain);
-}else{
-showHomepage(domains);
-fakeActivity(domains);
-}
-});
+<!-- duplicate for infinite scroll -->
 
-function showHomepage(domains){
+<div class="domain-box"><span class="domain-name">kwzo.com</span></div>
+<div class="domain-box"><span class="domain-name">divinitypro.com</span></div>
+<div class="domain-box"><span class="domain-name">ultrabrand.io</span></div>
+<div class="domain-box"><span class="domain-name">nextvision.ai</span></div>
+<div class="domain-box"><span class="domain-name">primehost.net</span></div>
 
-let html=`<div class="slider">
+</div>
+</section>
 
-<div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1526378722484-bd91ca387e72')">
-<div class="slide-content"><h1>Elite Domain Market</h1><p>Luxury digital assets</p></div>
+<!-- DOMAINS -->
+
+<section class="domains">
+
+<div class="card">
+<h3>kwzo.com</h3>
+<p>Brandable short domain.</p>
+<a class="btn" href="https://wa.me/31000000000">Buy / Contact</a>
 </div>
 
-<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d')">
-<div class="slide-content"><h1>High Value Domains</h1><p>Secure deals</p></div>
+<div class="card">
+<h3>divinitypro.com</h3>
+<p>Premium business identity.</p>
+<a class="btn" href="https://wa.me/31000000000">Buy / Contact</a>
 </div>
 
-<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1518779578993-ec3579fee39f')">
-<div class="slide-content"><h1>Domainer Empire</h1><p>Own the internet</p></div>
-</div>
+</section>
 
-<div class="dots"></div>
-</div>
+<!-- FOOTER -->
 
-<div class="domain-slider"><div class="domain-track">`;
-
-domains.concat(domains).forEach(d=>{
-html+=`<div class="domain-box" onclick="window.location='?domain=${d}'">
-<i class="fa-solid fa-globe domain-icon"></i>
-<div class="domain-name">${d}</div>
-</div>`;
-});
-
-html+=`</div></div>
-
-<div id="domains">`;
-
-domains.forEach(d=>{
-html+=`<div class="card" onclick="window.location='?domain=${d}'">
-<div class="domain">${d}</div></div>`;
-});
-
-html+=`</div>
-
-<div class="about">
-<h2>About DivinityPro</h2>
-<p>We specialize in premium domain investments with maximum ROI potential.</p>
-<div class="contact">
-📧 contact@divinitypro.com<br>
-📞 +218 91 607 3973
-</div>
-</div>`;
-
-document.getElementById('app').innerHTML=html;
-initSlider();
-}
-
-function showLanding(domain){
-document.getElementById('app').innerHTML=`
-<div class="landing">
-<div class="big-domain">${domain}</div>
-
-<div class="actions">
-<input id="offerPrice" placeholder="Enter offer $" />
-<button class="btn offer" onclick="sendOffer('${domain}')">Make Offer</button>
-<button class="btn buy" onclick="window.open('https://www.godaddy.com/domainsearch/find?domainToCheck=${domain}')">Buy Now</button>
-<button class="btn whatsapp" onclick="window.open('https://wa.me/${WHATSAPP}?text=I want ${domain}')">Chat</button>
-</div>
-
-<div style="margin-top:25px;cursor:pointer" onclick="window.location='/'">← Back</div>
-</div>`;
-}
-
-function sendOffer(domain){
-let price=document.getElementById('offerPrice').value;
-if(!price){alert("Enter offer");return;}
-window.open(`https://wa.me/${WHATSAPP}?text=Offer ${domain} $${price}`);
-}
-
-function initSlider(){
-const slides=document.querySelectorAll('.slide');
-const dotsContainer=document.querySelector('.dots');
-let index=0;
-
-slides.forEach((_,i)=>{
-let dot=document.createElement('div');
-dot.classList.add('dot');
-if(i===0) dot.classList.add('active');
-dot.onclick=()=>showSlide(index=i);
-dotsContainer.appendChild(dot);
-});
-
-const dots=document.querySelectorAll('.dot');
-
-function showSlide(i){
-slides.forEach(s=>s.classList.remove('active'));
-dots.forEach(d=>d.classList.remove('active'));
-slides[i].classList.add('active');
-dots[i].classList.add('active');
-}
-
-setInterval(()=>{
-index=(index+1)%slides.length;
-showSlide(index);
-},4000);
-}
-
-function fakeActivity(domains){
-setInterval(()=>{
-let d=domains[Math.floor(Math.random()*domains.length)];
-let popup=document.getElementById('popup');
-popup.innerText=`Someone made offer on ${d}`;
-popup.style.display='block';
-setTimeout(()=>popup.style.display='none',3000);
-},5000);
-}
-
-</script>
+<footer>
+© 2026 DivinityPro — All Rights Reserved
+</footer>
 
 </body>
 </html>
