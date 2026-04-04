@@ -320,16 +320,15 @@ font-size:28px;
 color:white;
 }
 
-/* FOOTER نحيف، على أقصى اليسار */
+/* FOOTER نحيف، محتوى على اليسار مع أيقونة واتساب على اليمين */
 footer{
 position:fixed;
 bottom:0;
 width:100%;
 padding:6px 6%; /* نحيف */
 display:flex;
-justify-content:flex-start; /* أقصى اليسار */
-align-items:flex-start;
-flex-direction:column;
+justify-content:space-between; /* محتوى على أقصى اليسار والواتساب على أقصى اليمين */
+align-items:center;
 border-top:2px solid rgba(255,110,196,0.5);
 color:white;
 z-index:999;
@@ -343,8 +342,8 @@ text-align:left;
 }
 
 @keyframes neonFooter{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
+0%{background-position:0% 50%;} 
+50%{background-position:100% 50%;} 
 100%{background-position:0% 50%;}
 }
 
@@ -376,6 +375,17 @@ font-size:13px;
 }
 
 footer .contact-info i{width:18px;}
+
+footer .whatsapp-footer{
+font-size:24px;
+color:#25D366;
+cursor:pointer;
+transition:.3s;
+}
+
+footer .whatsapp-footer:hover{
+transform:scale(1.2);
+}
 </style>
 </head>
 <body>
@@ -522,11 +532,16 @@ setTimeout(()=>{popup.style.display='none';},3000);
 </script>
 
 <footer>
+<div class="footer-left">
 <div class="logo-footer">DivinityPro</div>
 <div class="contact-info">
 <div><i class="fas fa-envelope"></i> contact@divinitypro.com</div>
 <div><i class="fas fa-phone"></i> +218 916 073 973</div>
 <div><i class="fas fa-globe"></i> www.divinitypro.com</div>
+</div>
+</div>
+<div class="whatsapp-footer" onclick="window.open('https://wa.me/218916073973?text=Hello!')">
+<i class="fab fa-whatsapp"></i>
 </div>
 </footer>
 
