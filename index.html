@@ -124,37 +124,37 @@ box-shadow:0 0 10px #00f0ff;
 /* DOMAINS GRID */
 #domains{
 width:90%;
-margin:50px auto;
+margin:30px auto;
 display:grid;
-grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-gap:25px;
+grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+gap:20px;
 }
 
 .card{
 background:rgba(255,255,255,0.05);
-padding:25px;
+padding:20px;
 border-radius:18px;
 text-align:center;
 cursor:pointer;
 transition:.35s;
 backdrop-filter:blur(10px);
 position:relative;
+border:2px solid rgba(0,240,255,0.2);
 }
 
 .card:hover{
-transform:translateY(-12px) scale(1.02);
-box-shadow:0 0 25px rgba(0,240,255,.3);
+transform:translateY(-8px) scale(1.02);
+box-shadow:0 0 25px rgba(0,240,255,.5);
+border:2px solid #00f0ff;
 }
 
-/* VIEWER COUNTER */
-.viewer-counter{
-position:absolute;
-top:12px;
-right:12px;
-background:rgba(0,0,0,0.4);
-padding:4px 10px;
-border-radius:8px;
-font-size:12px;
+.domain{
+font-size:18px;
+font-weight:600;
+background:linear-gradient(90deg,#ff00ff,#00ffff);
+-webkit-background-clip:text;
+color:transparent;
+text-shadow:0 0 12px rgba(255,0,255,.5);
 }
 
 /* LANDING */
@@ -171,9 +171,10 @@ text-align:center;
 font-size:clamp(28px,8vw,50px);
 word-break:break-word;
 line-height:1.2;
-background:linear-gradient(90deg,#00f0ff,#8a2eff);
+background:linear-gradient(90deg,#ff00ff,#00ffff);
 -webkit-background-clip:text;
 color:transparent;
+text-shadow:0 0 25px rgba(0,255,255,.5);
 }
 
 .actions{
@@ -256,7 +257,7 @@ color:white;
 /* سلايدر صغير دومينات متحرك */
 .domain-slider{
 width:90%;
-margin:30px auto;
+margin:20px auto;
 overflow:hidden;
 position:relative;
 height:70px;
@@ -265,13 +266,13 @@ height:70px;
 .domain-track{
 display:flex;
 gap:15px;
-animation:slideDomains 15s linear infinite;
+animation:slideDomains 20s linear infinite;
 }
 
 .domain-bubble{
 padding:12px 20px;
 border-radius:50px;
-background:linear-gradient(135deg,#ff6ec4,#7873f5);
+background:linear-gradient(135deg,#ff6ec4,#7873f5,#00ffff);
 color:white;
 font-weight:600;
 white-space:nowrap;
@@ -282,7 +283,7 @@ flex-shrink:0;
 
 .domain-bubble:hover{
 transform:scale(1.1);
-box-shadow:0 0 15px rgba(255,255,255,0.3);
+box-shadow:0 0 15px rgba(0,255,255,0.5);
 }
 
 @keyframes slideDomains{
@@ -296,7 +297,6 @@ padding:25px;
 opacity:.7;
 border-top:1px solid rgba(255,255,255,.1);
 }
-
 </style>
 </head>
 <body>
@@ -358,6 +358,8 @@ let html=`
 </div></div>
 <div class="dots"></div>
 </div>
+
+<!-- سلايدر صغير دومينات متحرك -->
 <div class="domain-slider">
 <div class="domain-track">`;
 
@@ -365,7 +367,19 @@ domains.forEach(d=>{
 html+=`<div class="domain-bubble" onclick="window.location='?domain=${d}'">${d}</div>`;
 });
 
-html+=`</div></div>`;
+html+=`</div></div>
+
+<!-- قائمة دومينات Grid -->
+<div id="domains">`;
+
+domains.forEach(d=>{
+html+=`<div class="card" onclick="window.location='?domain=${d}'">
+<div class="domain">${d}</div>
+<div class="viewer-counter">🔥 ${viewerCounts[d]} viewers</div>
+</div>`;
+});
+
+html+=`</div>`;
 
 document.getElementById('app').innerHTML=html;
 initSlider();
