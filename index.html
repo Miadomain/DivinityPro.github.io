@@ -43,7 +43,7 @@ animation:glowMove 5s linear infinite;
 100%{background-position:200%}
 }
 
-/* ================= SLIDER HERO ================= */
+/* ================= HERO SLIDER ================= */
 
 .slider{
 position:relative;
@@ -62,7 +62,6 @@ flex-direction:column;
 text-align:center;
 opacity:0;
 transition:1s;
-padding:20px;
 background-size:cover;
 background-position:center;
 }
@@ -73,8 +72,6 @@ position:absolute;
 width:100%;
 height:100%;
 background:linear-gradient(180deg,rgba(0,0,0,.4),#000);
-top:0;
-left:0;
 }
 
 .slide-content{position:relative;z-index:2;}
@@ -109,15 +106,23 @@ background:#00f0ff;
 box-shadow:0 0 10px #00f0ff;
 }
 
-/* ================= DOMAIN RECTANGLE SLIDER ================= */
+/* ================= DOMAIN MOVING SLIDER ================= */
 
 .domain-slider{
 width:100%;
 overflow:hidden;
-padding:35px 0;
-background:linear-gradient(90deg,#020617,#050b25);
-border-top:1px solid rgba(255,255,255,.05);
-border-bottom:1px solid rgba(255,255,255,.05);
+padding:40px 0;
+background:linear-gradient(270deg,#020617,#071a52,#14003b,#001f3f,#020617);
+background-size:600% 600%;
+animation:gradientMove 12s ease infinite;
+border-top:1px solid rgba(0,240,255,.2);
+border-bottom:1px solid rgba(138,46,255,.2);
+}
+
+@keyframes gradientMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
 }
 
 .domain-track{
@@ -131,25 +136,33 @@ animation:scrollDomains 30s linear infinite;
 animation-play-state:paused;
 }
 
+@keyframes scrollDomains{
+from{transform:translateX(0);}
+to{transform:translateX(-50%);}
+}
+
 .domain-box{
-min-width:240px;
-height:80px;
+min-width:250px;
+height:85px;
 display:flex;
 align-items:center;
 gap:15px;
-padding:0 20px;
-border-radius:14px;
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.08);
-backdrop-filter:blur(10px);
+padding:0 22px;
+border-radius:16px;
+background:linear-gradient(135deg,
+rgba(0,240,255,.12),
+rgba(138,46,255,.12));
+border:1px solid rgba(255,255,255,.15);
+backdrop-filter:blur(14px);
 cursor:pointer;
-transition:.3s;
+transition:.35s;
 }
 
 .domain-box:hover{
-transform:scale(1.05);
-border:1px solid #00f0ff;
-box-shadow:0 0 20px rgba(0,240,255,.4);
+transform:translateY(-5px) scale(1.06);
+box-shadow:
+0 0 25px rgba(0,240,255,.5),
+0 0 45px rgba(138,46,255,.4);
 }
 
 .domain-icon{
@@ -164,13 +177,7 @@ background:linear-gradient(90deg,#00f0ff,#8a2eff);
 color:transparent;
 }
 
-@keyframes scrollDomains{
-from{transform:translateX(0);}
-to{transform:translateX(-50%);}
-}
-
-/* ================= GRID ================= */
-
+/* GRID */
 #domains{
 width:90%;
 margin:50px auto;
@@ -181,7 +188,6 @@ gap:25px;
 
 .card{
 background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.08);
 padding:25px;
 border-radius:18px;
 text-align:center;
@@ -219,7 +225,7 @@ background:linear-gradient(90deg,#00f0ff,#8a2eff);
 color:transparent;
 }
 
-.actions{margin-top:25px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+.actions{margin-top:25px;display:flex;gap:12px;flex-wrap:wrap;}
 
 input{
 padding:12px;
@@ -246,6 +252,8 @@ padding:60px 10%;
 background:#050505;
 text-align:center;
 }
+
+.contact{margin-top:20px;opacity:.8;}
 
 .popup{
 position:fixed;
@@ -295,16 +303,31 @@ function showHomepage(domains){
 let html=`
 
 <div class="slider">
+
 <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1526378722484-bd91ca387e72')">
 <div class="slide-content">
 <h1>Elite Domain Market</h1>
-<p>Luxury digital assets</p>
+<p>Luxury digital assets for serious investors</p>
 </div>
 </div>
+
+<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d')">
+<div class="slide-content">
+<h1>High Value Domains</h1>
+<p>Secure deals via GoDaddy</p>
+</div>
+</div>
+
+<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1518779578993-ec3579fee39f')">
+<div class="slide-content">
+<h1>Domainer Empire</h1>
+<p>Own the internet</p>
+</div>
+</div>
+
 <div class="dots"></div>
 </div>
 
-<!-- RECTANGLE DOMAIN SLIDER -->
 <div class="domain-slider">
 <div class="domain-track">
 `;
@@ -336,7 +359,11 @@ html+=`
 
 <div class="about">
 <h2>About DivinityPro</h2>
-<p>Premium domain investment marketplace.</p>
+<p>We specialize in premium domain investments with maximum ROI potential.</p>
+<div class="contact">
+📧 contact@divinitypro.com<br>
+📞 +218 91 607 3973
+</div>
 </div>
 `;
 
