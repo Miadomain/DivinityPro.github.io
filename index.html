@@ -313,7 +313,7 @@ font-size:28px;
 color:white;
 }
 
-/* FOOTER رقيق */
+/* FOOTER متناسق مع السلايدر الصغير */
 footer{
 position:fixed;
 bottom:0;
@@ -321,15 +321,15 @@ width:100%;
 padding:10px 6%; /* رقيق */
 display:flex;
 justify-content:center;
-align-items:flex-start;
+align-items:center;
 flex-direction:column;
-border-top:1px solid rgba(0,240,255,0.3);
+border-top:2px solid rgba(255,110,196,0.5);
 color:white;
 z-index:999;
 font-size:12px;
-background:linear-gradient(-45deg,#ff6ec4,#7873f5,#00ffff,#ff6ec4);
+background:linear-gradient(135deg,#ff6ec4,#7873f5,#00ffff,#ff6ec4);
 background-size:400% 400%;
-animation:neonFooter 10s ease infinite;
+animation:neonFooter 6s ease infinite;
 backdrop-filter:blur(10px);
 border-radius:12px 12px 0 0;
 text-align:center;
@@ -343,7 +343,7 @@ text-align:center;
 
 footer .logo-footer{
 font-weight:700;
-background:linear-gradient(90deg,#00f0ff,#ff00ff,#00ffff);
+background:linear-gradient(135deg,#ff6ec4,#7873f5,#00ffff);
 -webkit-background-clip:text;
 color:transparent;
 animation:glowMove 5s linear infinite;
