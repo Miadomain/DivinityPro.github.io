@@ -48,7 +48,7 @@ font-size:14px;
 opacity:.9;
 }
 
-/* SLIDER الصور */
+/* SLIDER الكبير */
 .slider{
 position:relative;
 height:340px;
@@ -253,6 +253,43 @@ font-size:28px;
 color:white;
 }
 
+/* سلايدر صغير دومينات متحرك */
+.domain-slider{
+width:90%;
+margin:30px auto;
+overflow:hidden;
+position:relative;
+height:70px;
+}
+
+.domain-track{
+display:flex;
+gap:15px;
+animation:slideDomains 15s linear infinite;
+}
+
+.domain-bubble{
+padding:12px 20px;
+border-radius:50px;
+background:linear-gradient(135deg,#ff6ec4,#7873f5);
+color:white;
+font-weight:600;
+white-space:nowrap;
+cursor:pointer;
+transition:.3s;
+flex-shrink:0;
+}
+
+.domain-bubble:hover{
+transform:scale(1.1);
+box-shadow:0 0 15px rgba(255,255,255,0.3);
+}
+
+@keyframes slideDomains{
+0%{transform:translateX(0);}
+100%{transform:translateX(-50%);}
+}
+
 footer{
 text-align:center;
 padding:25px;
@@ -321,15 +358,14 @@ let html=`
 </div></div>
 <div class="dots"></div>
 </div>
-<div id="domains">`;
+<div class="domain-slider">
+<div class="domain-track">`;
 
 domains.forEach(d=>{
-html+=`<div class="card" onclick="window.location='?domain=${d}'">
-<div class="domain">${d}</div>
-<div class="viewer-counter">🔥 ${viewerCounts[d]} viewers</div>
-</div>`;
+html+=`<div class="domain-bubble" onclick="window.location='?domain=${d}'">${d}</div>`;
 });
-html+=`</div>`;
+
+html+=`</div></div>`;
 
 document.getElementById('app').innerHTML=html;
 initSlider();
