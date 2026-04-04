@@ -15,20 +15,19 @@ font-family:'Poppins',sans-serif;
 background:radial-gradient(circle at top,#0a0f2c,#000);
 color:white;
 overflow-x:hidden;
+padding-bottom:100px;
 }
 
-/* HEADER ثابت */
+/* HEADER */
 header{
 padding:15px 6%;
 display:flex;
-justify-content:space-between;
+justify-content:flex-start;
 align-items:center;
 background:rgba(0,0,0,0.7);
 backdrop-filter:blur(10px);
 border-bottom:1px solid rgba(255,255,255,0.08);
-position:fixed;
-width:100%;
-top:0;
+position:relative;
 z-index:999;
 }
 
@@ -46,13 +45,8 @@ animation:glowMove 5s linear infinite;
 100%{background-position:200%}
 }
 
-.contact{
-font-size:14px;
-opacity:.9;
-}
-
 /* BODY CONTAINER */
-#app{padding-top:100px;}
+#app{padding-top:20px;}
 
 /* SLIDER الكبير */
 .slider{
@@ -172,7 +166,6 @@ box-shadow:0 0 20px #ff00ff,0 0 30px #00ffff,0 0 40px #ff6ec4;
 100%{transform:translateX(-50%);}
 }
 
-/* Neon Glow مستمر للبطاقات */
 @keyframes neonGlow{
 0%{background-position:0% 50%;}
 50%{background-position:100% 50%;}
@@ -294,7 +287,7 @@ box-shadow:0 0 15px rgba(0,240,255,0.2);
 /* WhatsApp floating */
 .floating-whatsapp{
 position:fixed;
-bottom:25px;
+bottom:100px;
 right:25px;
 background:#25D366;
 width:60px;
@@ -319,19 +312,37 @@ font-size:28px;
 color:white;
 }
 
+/* FOOTER ثابت أسفل */
 footer{
-text-align:center;
-padding:25px;
-opacity:.7;
-border-top:1px solid rgba(255,255,255,.1);
+position:fixed;
+bottom:0;
+width:100%;
+background:rgba(0,0,0,0.9);
+backdrop-filter:blur(10px);
+padding:15px 6%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-top:2px solid rgba(0,240,255,0.3);
+color:white;
+z-index:999;
+font-size:14px;
 }
+
+footer .logo-footer{
+font-weight:700;
+background:linear-gradient(90deg,#00f0ff,#ff00ff,#00ffff);
+-webkit-background-clip:text;
+color:transparent;
+animation:glowMove 5s linear infinite;
+}
+
 </style>
 </head>
 <body>
 
 <header>
 <div class="logo">DivinityPro</div>
-<div class="contact">📧 contact@divinitypro.com | 📞 +218 916 073 973</div>
 </header>
 
 <div id="app"></div>
@@ -472,7 +483,9 @@ setTimeout(()=>{popup.style.display='none';},3000);
 </script>
 
 <footer>
-© 2026 DivinityPro — All Rights Reserved
+<div class="logo-footer">DivinityPro</div>
+<div>📧 contact@divinitypro.com | 📞 +218 916 073 973</div>
 </footer>
+
 </body>
 </html>
