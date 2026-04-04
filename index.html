@@ -2,42 +2,45 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>DivinityPro - Premium Domains</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DivinityPro - Elite Domains</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Montserrat,sans-serif;
-}
-
 body{
-background:#020617;
+margin:0;
+font-family:'Poppins',sans-serif;
+background:radial-gradient(circle at top,#0a0f2c,#000);
 color:white;
 overflow-x:hidden;
 }
 
-/* ================= HEADER ================= */
-
+/* HEADER */
 header{
+padding:18px 6%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:15px 6%;
-background:#020617;
-border-bottom:1px solid rgba(255,255,255,.1);
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(255,255,255,0.08);
 flex-wrap:wrap;
 }
 
 .logo{
-font-size:22px;
+font-size:24px;
 font-weight:700;
-color:#00f0ff;
+background:linear-gradient(90deg,#00f0ff,#8a2eff,#00f0ff);
+-webkit-background-clip:text;
+color:transparent;
+animation:glowMove 5s linear infinite;
+}
+
+@keyframes glowMove{
+0%{background-position:0%}
+100%{background-position:200%}
 }
 
 .contact{
@@ -45,46 +48,62 @@ font-size:14px;
 opacity:.9;
 }
 
-/* ================= HERO ================= */
-
-.hero{
+/* HERO / LANDING */
+.landing{
+display:flex;
+justify-content:center;
+align-items:center;
+height:70vh;
+flex-direction:column;
 text-align:center;
-padding:70px 20px;
 }
 
 .big-domain{
 font-size:clamp(28px,8vw,50px);
 word-break:break-word;
+padding:0 15px;
 line-height:1.2;
 background:linear-gradient(90deg,#00f0ff,#8a2eff);
 -webkit-background-clip:text;
 color:transparent;
 }
 
-.hero p{
-margin-top:15px;
-opacity:.8;
+.actions{
+margin-top:25px;
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+justify-content:center;
 }
 
-/* ================= BUTTON ================= */
+input{
+padding:12px;
+border-radius:10px;
+border:none;
+background:#111;
+color:white;
+}
 
 .btn{
-display:inline-block;
-margin-top:25px;
-padding:14px 28px;
-border-radius:40px;
-text-decoration:none;
-color:white;
-background:linear-gradient(90deg,#00f0ff,#8a2eff);
+padding:12px 22px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+font-weight:600;
 transition:.3s;
 }
 
-.btn:hover{
-transform:scale(1.07);
+.buy{background:#00e676;color:black;}
+.offer{background:#ffb300;color:black;}
+.whatsapp{background:#25D366;color:white;}
+
+.back{
+margin-top:20px;
+cursor:pointer;
+opacity:.8;
 }
 
-/* ================= SLIDER ================= */
-
+/* DOMAIN SLIDER */
 .domain-slider{
 width:100%;
 overflow:hidden;
@@ -104,7 +123,7 @@ border-bottom:1px solid rgba(138,46,255,.2);
 
 .slider-track{
 display:flex;
-gap:18px;
+gap:15px;
 width:max-content;
 animation:scrollDomains 55s linear infinite;
 }
@@ -118,20 +137,15 @@ from{transform:translateX(0);}
 to{transform:translateX(-50%);}
 }
 
-/* domain box */
-
 .domain-box{
-min-width:180px;
-height:60px;
+min-width:170px;
+height:55px;
 display:flex;
 align-items:center;
 justify-content:center;
-border-radius:14px;
-background:linear-gradient(135deg,
-rgba(0,240,255,.10),
-rgba(138,46,255,.10));
-border:1px solid rgba(255,255,255,.12);
-backdrop-filter:blur(12px);
+border-radius:12px;
+background:rgba(255,255,255,.06);
+border:1px solid rgba(255,255,255,.1);
 cursor:pointer;
 transition:.3s;
 }
@@ -146,35 +160,46 @@ font-size:14px;
 white-space:nowrap;
 overflow:hidden;
 text-overflow:ellipsis;
-max-width:140px;
+max-width:130px;
 }
 
-/* ================= DOMAINS GRID ================= */
-
-.domains{
-padding:60px 6%;
+/* DOMAINS GRID */
+#domains{
+width:90%;
+margin:50px auto;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
 gap:25px;
 }
 
 .card{
-background:#071a52;
+background:rgba(255,255,255,0.05);
 padding:25px;
-border-radius:16px;
+border-radius:18px;
 text-align:center;
-transition:.3s;
+cursor:pointer;
+transition:.35s;
+backdrop-filter:blur(10px);
 }
 
 .card:hover{
-transform:translateY(-6px);
+transform:translateY(-12px) scale(1.02);
+box-shadow:0 0 25px rgba(0,240,255,.3);
 }
 
-.card h3{
-margin-bottom:10px;
+/* POPUP */
+.popup{
+position:fixed;
+bottom:20px;
+left:20px;
+background:rgba(0,0,0,0.8);
+padding:15px 20px;
+border-radius:12px;
+font-size:14px;
+display:none;
+border:1px solid rgba(0,240,255,0.3);
+box-shadow:0 0 15px rgba(0,240,255,0.2);
 }
-
-/* ================= FOOTER ================= */
 
 footer{
 text-align:center;
@@ -183,85 +208,87 @@ opacity:.7;
 border-top:1px solid rgba(255,255,255,.1);
 }
 
-/* ================= MOBILE ================= */
-
-@media(max-width:600px){
-
-.contact{
-width:100%;
-text-align:center;
-margin-top:8px;
-}
-
-.hero{
-padding:50px 15px;
-}
-
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-
 <header>
 <div class="logo">DivinityPro</div>
-<div class="contact">
-📞 +31 000 000 000 | ✉ contact@divinitypro.com
-</div>
+<div class="contact">📧 contact@divinitypro.com | 📞 +218 916 073 973</div>
 </header>
 
-<!-- HERO -->
+<div id="app"></div>
+<div class="popup" id="popup"></div>
 
-<section class="hero">
-<h1 class="big-domain">Premium Domains Marketplace</h1>
-<p>Secure your brand with powerful digital assets.</p>
-<a href="https://wa.me/31000000000" class="btn">Contact Now</a>
-</section>
+<script>
+const sheetURL='https://docs.google.com/spreadsheets/d/e/2PACX-1vRFLTWddJjWfI0WG0HZp4uOmxobQ6Tfzw4WiheRdAiwkh0ywEdDma7MQSznkp9FCSCcRLfTT0KTbyfw/pub?output=csv';
+const WHATSAPP="218916073973";
 
-<!-- SLIDER -->
+const params=new URLSearchParams(window.location.search);
+const selectedDomain=params.get("domain");
 
-<section class="domain-slider">
-<div class="slider-track">
+fetch(sheetURL)
+.then(res=>res.text())
+.then(text=>{
+let domains=text.split(/\r?\n/).map(r=>r.trim()).filter(r=>r!=="" && r.toLowerCase()!=="name");
 
-<div class="domain-box"><span class="domain-name">kwzo.com</span></div>
-<div class="domain-box"><span class="domain-name">divinitypro.com</span></div>
-<div class="domain-box"><span class="domain-name">ultrabrand.io</span></div>
-<div class="domain-box"><span class="domain-name">nextvision.ai</span></div>
-<div class="domain-box"><span class="domain-name">primehost.net</span></div>
+if(selectedDomain){
+showLanding(selectedDomain);
+}else{
+showHomepage(domains);
+fakeActivity(domains);
+}
+});
 
-<!-- duplicate for infinite scroll -->
+function showHomepage(domains){
+let html=`
 
-<div class="domain-box"><span class="domain-name">kwzo.com</span></div>
-<div class="domain-box"><span class="domain-name">divinitypro.com</span></div>
-<div class="domain-box"><span class="domain-name">ultrabrand.io</span></div>
-<div class="domain-box"><span class="domain-name">nextvision.ai</span></div>
-<div class="domain-box"><span class="domain-name">primehost.net</span></div>
+<div class="domain-slider"><div class="slider-track">`;
+domains.concat(domains).forEach(d=>{
+html+=`<div class="domain-box" onclick="window.location='?domain=${d}'"><span class="domain-name">${d}</span></div>`;
+});
+html+=`</div></div>`;
 
+html+=`<div id="domains">`;
+domains.forEach(d=>{
+html+=`<div class="card" onclick="window.location='?domain=${d}'"><div class="domain">${d}</div></div>`;
+});
+html+=`</div>`;
+
+document.getElementById('app').innerHTML=html;
+}
+
+function showLanding(domain){
+document.getElementById('app').innerHTML=`<div class="landing">
+<div class="big-domain">${domain}</div>
+<div class="actions">
+<input id="offerPrice" placeholder="Enter offer $" />
+<button class="btn offer" onclick="sendOffer('${domain}')">Make Offer</button>
+<button class="btn buy" onclick="window.open('https://www.godaddy.com/domainsearch/find?domainToCheck=${domain}')">Buy Now</button>
+<button class="btn whatsapp" onclick="window.open('https://wa.me/${WHATSAPP}?text=I want ${domain}')">Chat</button>
 </div>
-</section>
+<div class="back" onclick="window.location='/'">← Back</div>
+</div>`;
+}
 
-<!-- DOMAINS -->
+function sendOffer(domain){
+let price=document.getElementById('offerPrice').value;
+if(!price){alert("Enter your offer");return;}
+let msg=`Hello, I want ${domain}%0AOffer: $${price}`;
+window.open(`https://wa.me/${WHATSAPP}?text=${msg}`);
+}
 
-<section class="domains">
-
-<div class="card">
-<h3>kwzo.com</h3>
-<p>Brandable short domain.</p>
-<a class="btn" href="https://wa.me/31000000000">Buy / Contact</a>
-</div>
-
-<div class="card">
-<h3>divinitypro.com</h3>
-<p>Premium business identity.</p>
-<a class="btn" href="https://wa.me/31000000000">Buy / Contact</a>
-</div>
-
-</section>
-
-<!-- FOOTER -->
+function fakeActivity(domains){
+setInterval(()=>{
+let d=domains[Math.floor(Math.random()*domains.length)];
+let popup=document.getElementById('popup');
+popup.innerText=`Someone made offer on ${d}`;
+popup.style.display='block';
+setTimeout(()=>{popup.style.display='none';},3000);
+},5000);
+}
+</script>
 
 <footer>
 © 2026 DivinityPro — All Rights Reserved
