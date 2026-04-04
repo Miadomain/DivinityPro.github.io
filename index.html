@@ -15,7 +15,7 @@ font-family:'Poppins',sans-serif;
 background:radial-gradient(circle at top,#0a0f2c,#000);
 color:white;
 overflow-x:hidden;
-padding-bottom:100px; /* space for footer رقيق */
+padding-bottom:60px; /* space for slim footer */
 }
 
 /* HEADER */
@@ -131,7 +131,7 @@ width:90%;
 margin:20px auto;
 overflow:hidden;
 position:relative;
-height:50px; /* تم تصغيره */
+height:50px; /* صغير */
 border-radius:25px;
 border:2px solid rgba(255,255,255,0.1);
 background:rgba(0,0,0,0.3);
@@ -170,6 +170,7 @@ box-shadow:0 0 20px #ff00ff,0 0 30px #00ffff,0 0 40px #ff6ec4;
 @keyframes neonGlow{
 0%{background-position:0% 50%;}
 50%{background-position:100% 50%;}
+
 100%{background-position:0% 50%;}
 }
 
@@ -313,12 +314,12 @@ font-size:28px;
 color:white;
 }
 
-/* FOOTER متناسق مع السلايدر الصغير */
+/* FOOTER نحيف متناسق مع السلايدر الصغير */
 footer{
 position:fixed;
 bottom:0;
 width:100%;
-padding:10px 6%; /* رقيق */
+padding:6px 6%; /* نحيف */
 display:flex;
 justify-content:center;
 align-items:center;
@@ -326,7 +327,7 @@ flex-direction:column;
 border-top:2px solid rgba(255,110,196,0.5);
 color:white;
 z-index:999;
-font-size:12px;
+font-size:11px;
 background:linear-gradient(135deg,#ff6ec4,#7873f5,#00ffff,#ff6ec4);
 background-size:400% 400%;
 animation:neonFooter 6s ease infinite;
@@ -347,13 +348,14 @@ background:linear-gradient(135deg,#ff6ec4,#7873f5,#00ffff);
 -webkit-background-clip:text;
 color:transparent;
 animation:glowMove 5s linear infinite;
-margin-bottom:5px;
+margin-bottom:3px;
+font-size:14px;
 }
 
 footer .contact-info{
 display:flex;
 flex-direction:column;
-gap:3px;
+gap:2px;
 align-items:center;
 flex-wrap:wrap;
 }
@@ -364,9 +366,10 @@ align-items:center;
 gap:5px;
 color:white;
 justify-content:center;
+font-size:11px;
 }
 
-footer .contact-info i{width:18px;}
+footer .contact-info i{width:16px;}
 </style>
 </head>
 <body>
