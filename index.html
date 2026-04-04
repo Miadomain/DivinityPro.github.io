@@ -15,7 +15,7 @@ font-family:'Poppins',sans-serif;
 background:radial-gradient(circle at top,#0a0f2c,#000);
 color:white;
 overflow-x:hidden;
-padding-bottom:70px; /* space for slim footer */
+padding-bottom:70px;
 }
 
 /* HEADER */
@@ -127,28 +127,28 @@ box-shadow:0 0 10px #00f0ff;
 
 /* سلايدر صغير دومينات متحرك سلس */
 .domain-slider{
-width:90%;
-margin:20px auto;
+width:85%; /* أصغر */
+margin:15px auto; /* أقل من قبل */
 overflow:hidden;
 position:relative;
-height:50px; /* صغير */
+height:40px; /* أصغر */
 border-radius:25px;
 border:2px solid rgba(255,255,255,0.1);
 background:rgba(0,0,0,0.3);
 display:flex;
-justify-content:center; /* محتوى السلايدر في الوسط */
+justify-content:center;
 align-items:center;
 }
 
 .domain-track{
 display:flex;
-gap:15px;
-animation:slideDomains 30s linear infinite;
-align-items:center; /* محاذاة الدومينات عموديًا */
+gap:12px;
+animation:slideDomains 60s linear infinite; /* حركة متوسطة */
+align-items:center;
 }
 
 .domain-bubble{
-padding:8px 18px;
+padding:6px 15px;
 border-radius:50px;
 background:linear-gradient(135deg,#ff6ec4,#7873f5,#00ffff);
 color:white;
@@ -158,7 +158,7 @@ cursor:pointer;
 transition:.3s, box-shadow 0.5s;
 flex-shrink:0;
 animation:neonGlow 3s linear infinite alternate;
-font-size:14px;
+font-size:13px;
 display:flex;
 justify-content:center;
 align-items:center;
@@ -176,7 +176,7 @@ box-shadow:0 0 20px #ff00ff,0 0 30px #00ffff,0 0 40px #ff6ec4;
 
 @keyframes neonGlow{
 0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
+50%{background-position:100% 50%;} 
 100%{background-position:0% 50%;}
 }
 
@@ -325,9 +325,9 @@ footer{
 position:fixed;
 bottom:0;
 width:100%;
-padding:6px 6%; /* نحيف */
+padding:6px 6%;
 display:flex;
-justify-content:space-between; /* محتوى على أقصى اليسار والواتساب على أقصى اليمين */
+justify-content:space-between;
 align-items:center;
 border-top:2px solid rgba(255,110,196,0.5);
 color:white;
@@ -361,7 +361,7 @@ footer .contact-info{
 display:flex;
 flex-direction:column;
 gap:4px;
-align-items:flex-start; /* أقصى اليسار */
+align-items:flex-start;
 flex-wrap:wrap;
 }
 
@@ -370,7 +370,7 @@ display:flex;
 align-items:center;
 gap:6px;
 color:white;
-justify-content:flex-start; /* أقصى اليسار */
+justify-content:flex-start;
 font-size:13px;
 }
 
