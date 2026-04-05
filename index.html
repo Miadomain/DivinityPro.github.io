@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DivinityPro</title>
+<title>DivinityPro - Elite Domains</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
@@ -12,64 +12,164 @@
 body{
 margin:0;
 font-family:'Poppins',sans-serif;
-background:#000;
+background:radial-gradient(circle at top,#0a0f2c,#000);
 color:white;
+overflow-x:hidden;
 padding-bottom:120px;
 }
 
 /* HEADER */
 header{
-padding:15px;
-background:#000;
-border-bottom:1px solid #222;
+padding:15px 6%;
+display:flex;
+justify-content:flex-start;
+align-items:center;
+background:rgba(0,0,0,0.7);
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(255,255,255,0.08);
 }
-.logo{font-size:22px;font-weight:bold;}
+.logo{
+font-size:24px;
+font-weight:700;
+background:linear-gradient(90deg,#00f0ff,#ff00ff,#00ffff);
+-webkit-background-clip:text;
+color:transparent;
+}
 
-/* DOMAINS */
-#domains{
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+/* SLIDER */
+.slider{
+position:relative;
+height:320px;
+overflow:hidden;
+margin:20px;
+border-radius:18px;
+}
+.slide{
+position:absolute;
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+opacity:0;
+transition:1s;
+background-size:cover;
+background-position:center;
+}
+.slide.active{opacity:1;}
+.slide::after{
+content:'';
+position:absolute;
+width:100%;
+height:100%;
+background:linear-gradient(180deg,rgba(0,0,0,.3),#000);
+}
+
+/* DOMAIN SCROLL */
+.domain-slider{
+width:90%;
+margin:20px auto;
+overflow:hidden;
+border-radius:30px;
+border:1px solid rgba(255,255,255,0.1);
+}
+.domain-track{
+display:flex;
 gap:15px;
-padding:20px;
+animation:scroll 25s linear infinite;
+}
+.domain-bubble{
+padding:8px 16px;
+background:linear-gradient(135deg,#ff6ec4,#7873f5,#00ffff);
+border-radius:20px;
+cursor:pointer;
+white-space:nowrap;
+}
+@keyframes scroll{
+0%{transform:translateX(0);}
+100%{transform:translateX(-50%);}
+}
+
+/* GRID */
+#domains{
+width:90%;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+gap:20px;
 }
 .card{
-background:#111;
+background:rgba(255,255,255,0.05);
 padding:20px;
-border-radius:12px;
+border-radius:15px;
 cursor:pointer;
+text-align:center;
+transition:.3s;
 }
-.card:hover{background:#1a1a1a;}
+.card:hover{transform:scale(1.05);}
 
-.domain{font-size:16px;}
+.domain{
+background:linear-gradient(90deg,#ff00ff,#00ffff);
+-webkit-background-clip:text;
+color:transparent;
+}
 
 /* LANDING */
 .landing{
 text-align:center;
 padding:50px 20px;
 }
-.big-domain{font-size:35px;margin-bottom:20px;}
+.big-domain{
+font-size:40px;
+background:linear-gradient(90deg,#ff00ff,#00ffff);
+-webkit-background-clip:text;
+color:transparent;
+}
 
 .btn{
-padding:10px 15px;
-margin:5px;
+padding:10px 18px;
 border:none;
-border-radius:8px;
+border-radius:10px;
+margin:5px;
 cursor:pointer;
 }
-.buy{background:#00e676;color:black;}
-.offer{background:#ffb300;color:black;}
+.buy{background:#00e676;}
+.offer{background:#ffb300;}
 .whatsapp{background:#25D366;color:white;}
+
+/* FLOAT WHATSAPP */
+.float-wa{
+position:fixed;
+bottom:90px;
+right:20px;
+width:60px;
+height:60px;
+background:#25D366;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+cursor:pointer;
+font-size:26px;
+}
 
 /* FOOTER */
 footer{
 position:fixed;
 bottom:0;
 width:100%;
-background:#111;
+background:linear-gradient(-45deg,#ff6ec4,#7873f5,#00ffff,#ff6ec4);
+background-size:400% 400%;
+animation:grad 10s ease infinite;
 padding:10px;
 text-align:center;
 font-size:12px;
 }
+@keyframes grad{
+0%{background-position:0%}
+100%{background-position:400%}
+}
+
 </style>
 </head>
 
@@ -81,58 +181,89 @@ font-size:12px;
 
 <div id="app">Loading...</div>
 
+<div class="float-wa" onclick="window.open('https://wa.me/218916073973')">
+<i class="fab fa-whatsapp"></i>
+</div>
+
 <footer>
-<div>contact@divinitypro.com</div>
-<div>+218 916 073 973</div>
+contact@divinitypro.com | +218 916 073 973
 </footer>
 
 <script>
 
 const BASE_URL="https://docs.google.com/spreadsheets/d/e/2PACX-1vSitqWwfiqP8hkEmrwOhJbg0gBj3LUgp_Iqa8WHWLUCjY0455r4mZv-KVd5oFIyWZ-3sOMdwACQwnVT/pub?output=csv";
 
-const WHATSAPP="218916073973";
+let domains=[];
 
-function getDomains(){
-return fetch(BASE_URL + "&t=" + Date.now(), {
-method:"GET",
-headers:{
-"Cache-Control":"no-cache"
-}
-})
+function loadDomains(){
+
+fetch(BASE_URL + "&t=" + Date.now(), {cache:"no-store"})
 .then(res=>res.text())
 .then(text=>{
-return text.split(/\n/)
+
+domains=text.split(/\n/)
 .map(x=>x.trim())
 .filter(x=>x && x.toLowerCase()!=="name");
-});
+
+const params=new URLSearchParams(window.location.search);
+const d=params.get("domain");
+
+if(d){
+showLanding(d);
+}else{
+showHome();
 }
 
-function renderHome(domains){
-let html=`<div id="domains">`;
+});
+
+}
+
+function showHome(){
+
+let html=`
+
+<div class="slider">
+<div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1526378722484-bd91ca387e72')"></div>
+<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d')"></div>
+</div>
+
+<div class="domain-slider">
+<div class="domain-track">
+`;
+
+domains.forEach(d=>{
+html+=`<div class="domain-bubble" onclick="go('${d}')">${d}</div>`;
+});
+
+html+=`</div></div><div id="domains">`;
 
 domains.forEach(d=>{
 html+=`
-<div class="card" onclick="openDomain('${d}')">
+<div class="card" onclick="go('${d}')">
 <div class="domain">${d}</div>
-</div>`;
+</div>
+`;
 });
 
 html+=`</div>`;
+
 document.getElementById("app").innerHTML=html;
+
+initSlider();
 }
 
-function renderDomain(domain){
+function showLanding(d){
 document.getElementById("app").innerHTML=`
 <div class="landing">
-<div class="big-domain">${domain}</div>
+<div class="big-domain">${d}</div>
 
 <input id="price" placeholder="Offer $" />
 
 <br>
 
-<button class="btn offer" onclick="offer('${domain}')">Offer</button>
-<button class="btn buy" onclick="window.open('https://www.godaddy.com/domainsearch/find?domainToCheck=${domain}')">Buy</button>
-<button class="btn whatsapp" onclick="window.open('https://wa.me/${WHATSAPP}?text=I want ${domain}')">Chat</button>
+<button class="btn offer" onclick="offer('${d}')">Offer</button>
+<button class="btn buy" onclick="window.open('https://www.godaddy.com/domainsearch/find?domainToCheck=${d}')">Buy</button>
+<button class="btn whatsapp" onclick="window.open('https://wa.me/218916073973?text=I want ${d}')">WhatsApp</button>
 
 <br><br>
 <button onclick="goHome()">Back</button>
@@ -140,40 +271,35 @@ document.getElementById("app").innerHTML=`
 `;
 }
 
-function openDomain(d){
+function go(d){
 history.pushState({}, "", "?domain="+d);
-renderDomain(d);
+loadDomains();
 }
 
 function goHome(){
 history.pushState({}, "", "/");
-load();
+loadDomains();
 }
 
-function offer(domain){
+function offer(d){
 let p=document.getElementById("price").value;
 if(!p){alert("Enter price");return;}
-window.open(`https://wa.me/${WHATSAPP}?text=Offer ${domain} $${p}`);
+window.open(`https://wa.me/218916073973?text=Offer ${d} $${p}`);
 }
 
-function load(){
-getDomains().then(domains=>{
-const params=new URLSearchParams(window.location.search);
-const d=params.get("domain");
-
-if(d){
-renderDomain(d);
-}else{
-renderHome(domains);
-}
-});
+function initSlider(){
+let slides=document.querySelectorAll(".slide");
+let i=0;
+setInterval(()=>{
+slides[i].classList.remove("active");
+i=(i+1)%slides.length;
+slides[i].classList.add("active");
+},4000);
 }
 
-// تشغيل
-load();
-
-// تحديث تلقائي
-setInterval(load,15000);
+// init
+loadDomains();
+setInterval(loadDomains,20000);
 
 </script>
 
