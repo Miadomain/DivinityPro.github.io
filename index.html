@@ -15,7 +15,7 @@ font-family:'Poppins',sans-serif;
 background:radial-gradient(circle at top,#0a0f2c,#000);
 color:white;
 overflow-x:hidden;
-padding-bottom:100px;
+padding-bottom:100px; /* space for footer رقيق */
 }
 
 /* HEADER */
@@ -45,9 +45,10 @@ animation:glowMove 5s linear infinite;
 100%{background-position:200%}
 }
 
+/* BODY CONTAINER */
 #app{padding-top:20px;}
 
-/* SLIDER */
+/* SLIDER الكبير */
 .slider{
 position:relative;
 height:340px;
@@ -84,7 +85,11 @@ left:0;
 border-radius:18px;
 }
 
-.slide-content{position:relative;z-index:2;}
+.slide-content{
+position:relative;
+z-index:2;
+}
+
 .slide.active{opacity:1;}
 
 .slide h1{
@@ -92,7 +97,10 @@ font-size:34px;
 background:linear-gradient(90deg,#00f0ff,#ff00ff);
 -webkit-background-clip:text;
 color:transparent;
+text-shadow:0 0 25px rgba(0,255,255,.5);
 }
+
+.slide p{opacity:.8;}
 
 .dots{
 position:absolute;
@@ -104,16 +112,26 @@ gap:10px;
 }
 
 .dot{
-width:12px;height:12px;background:#444;border-radius:50%;cursor:pointer;
+width:12px;
+height:12px;
+background:#444;
+border-radius:50%;
+cursor:pointer;
+transition:.3s;
 }
-.dot.active{background:#00f0ff;}
 
-/* DOMAIN SLIDER */
+.dot.active{
+background:#00f0ff;
+box-shadow:0 0 10px #00f0ff;
+}
+
+/* سلايدر صغير دومينات متحرك سلس */
 .domain-slider{
 width:90%;
 margin:20px auto;
 overflow:hidden;
-height:50px;
+position:relative;
+height:50px; /* تم تصغيره */
 border-radius:25px;
 border:2px solid rgba(255,255,255,0.1);
 background:rgba(0,0,0,0.3);
@@ -133,13 +151,26 @@ color:white;
 font-weight:600;
 white-space:nowrap;
 cursor:pointer;
+transition:.3s, box-shadow 0.5s;
 flex-shrink:0;
+animation:neonGlow 3s linear infinite alternate;
 font-size:14px;
+}
+
+.domain-bubble:hover{
+transform:scale(1.1);
+box-shadow:0 0 20px #ff00ff,0 0 30px #00ffff,0 0 40px #ff6ec4;
 }
 
 @keyframes slideDomains{
 0%{transform:translateX(0);}
 100%{transform:translateX(-50%);}
+}
+
+@keyframes neonGlow{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
 }
 
 /* GRID */
@@ -157,11 +188,16 @@ padding:20px;
 border-radius:18px;
 text-align:center;
 cursor:pointer;
+transition:.35s, box-shadow 0.5s;
+backdrop-filter:blur(10px);
+position:relative;
 border:2px solid rgba(0,240,255,0.2);
+animation:neonGlow 4s linear infinite alternate;
 }
 
 .card:hover{
-transform:translateY(-8px);
+transform:translateY(-8px) scale(1.02);
+box-shadow:0 0 25px #ff00ff,0 0 35px #00ffff,0 0 40px #ff6ec4;
 border:2px solid #00f0ff;
 }
 
@@ -171,9 +207,14 @@ font-weight:600;
 background:linear-gradient(90deg,#ff00ff,#00ffff);
 -webkit-background-clip:text;
 color:transparent;
+text-shadow:0 0 12px rgba(255,0,255,.5);
 }
 
-.viewer-counter{font-size:12px;margin-top:6px;}
+.viewer-counter{
+font-size:12px;
+margin-top:6px;
+opacity:.8;
+}
 
 /* LANDING */
 .landing{
@@ -187,27 +228,50 @@ text-align:center;
 
 .big-domain{
 font-size:clamp(28px,8vw,50px);
+word-break:break-word;
+line-height:1.2;
 background:linear-gradient(90deg,#ff00ff,#00ffff);
 -webkit-background-clip:text;
 color:transparent;
+text-shadow:0 0 25px rgba(0,255,255,.5);
 }
 
-.actions{margin-top:25px;display:flex;gap:12px;flex-wrap:wrap;}
+.actions{
+margin-top:25px;
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+justify-content:center;
+}
 
 input{
-padding:12px;border-radius:10px;border:none;background:#111;color:white;
+padding:12px;
+border-radius:10px;
+border:none;
+background:#111;
+color:white;
 }
 
 .btn{
-padding:12px 22px;border:none;border-radius:12px;cursor:pointer;
+padding:12px 22px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+font-weight:600;
+transition:.3s;
 }
 
 .buy{background:#00e676;color:black;}
 .offer{background:#ffb300;color:black;}
 .whatsapp{background:#25D366;color:white;}
 
-.back{margin-top:20px;cursor:pointer;}
+.back{
+margin-top:20px;
+cursor:pointer;
+opacity:.8;
+}
 
+/* POPUP */
 .popup{
 position:fixed;
 bottom:20px;
@@ -215,32 +279,96 @@ left:20px;
 background:rgba(0,0,0,0.8);
 padding:15px 20px;
 border-radius:12px;
+font-size:14px;
 display:none;
+border:1px solid rgba(0,240,255,0.3);
+box-shadow:0 0 15px rgba(0,240,255,0.2);
 }
 
+/* WhatsApp floating */
 .floating-whatsapp{
 position:fixed;
 bottom:100px;
 right:25px;
 background:#25D366;
-width:60px;height:60px;border-radius:50%;
-display:flex;justify-content:center;align-items:center;
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+box-shadow:0 4px 15px rgba(0,0,0,0.3);
 cursor:pointer;
 z-index:9999;
+transition:.3s;
 }
 
+.floating-whatsapp:hover{
+transform:scale(1.1);
+box-shadow:0 0 25px #25D366;
+}
+
+.floating-whatsapp i{
+font-size:28px;
+color:white;
+}
+
+/* FOOTER رقيق */
 footer{
 position:fixed;
 bottom:0;
 width:100%;
-padding:10px 6%;
-text-align:center;
-background:#111;
+padding:10px 6%; /* رقيق */
+display:flex;
+justify-content:center;
+align-items:flex-start;
+flex-direction:column;
+border-top:1px solid rgba(0,240,255,0.3);
+color:white;
+z-index:999;
 font-size:12px;
+background:linear-gradient(-45deg,#ff6ec4,#7873f5,#00ffff,#ff6ec4);
+background-size:400% 400%;
+animation:neonFooter 10s ease infinite;
+backdrop-filter:blur(10px);
+border-radius:12px 12px 0 0;
+text-align:center;
 }
+
+@keyframes neonFooter{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+footer .logo-footer{
+font-weight:700;
+background:linear-gradient(90deg,#00f0ff,#ff00ff,#00ffff);
+-webkit-background-clip:text;
+color:transparent;
+animation:glowMove 5s linear infinite;
+margin-bottom:5px;
+}
+
+footer .contact-info{
+display:flex;
+flex-direction:column;
+gap:3px;
+align-items:center;
+flex-wrap:wrap;
+}
+
+footer .contact-info div{
+display:flex;
+align-items:center;
+gap:5px;
+color:white;
+justify-content:center;
+}
+
+footer .contact-info i{width:18px;}
 </style>
 </head>
-
 <body>
 
 <header>
@@ -250,6 +378,7 @@ font-size:12px;
 <div id="app"></div>
 <div class="popup" id="popup"></div>
 
+<!-- WhatsApp floating -->
 <div class="floating-whatsapp" onclick="window.open('https://wa.me/218916073973?text=Hello!')">
 <i class="fab fa-whatsapp"></i>
 </div>
@@ -264,22 +393,11 @@ const selectedDomain=params.get("domain");
 let domainsList=[];
 let viewerCounts={};
 
-/* ===== AUTO UPDATE GOOGLE SHEET ===== */
-function loadSheet(){
-
-fetch(sheetURL + "&t=" + Date.now())
+fetch(sheetURL)
 .then(res=>res.text())
 .then(text=>{
-
-domainsList=text.split(/\r?\n/)
-.map(r=>r.trim())
-.filter(r=>r!=="" && r.toLowerCase()!=="name");
-
-domainsList.forEach(d=>{
-if(!viewerCounts[d]){
-viewerCounts[d]=Math.floor(Math.random()*10)+5;
-}
-});
+domainsList=text.split(/\r?\n/).map(r=>r.trim()).filter(r=>r!=="" && r.toLowerCase()!=="name");
+domainsList.forEach(d=>viewerCounts[d]=Math.floor(Math.random()*10)+5);
 
 if(selectedDomain){
 showLanding(selectedDomain);
@@ -288,29 +406,38 @@ showHomepage(domainsList);
 fakeActivity(domainsList);
 }
 });
-}
 
-loadSheet();
-setInterval(loadSheet,30000);
-
-/* ===== HOMEPAGE ===== */
 function showHomepage(domains){
-
-let html=`<div class="slider">
-<div class="slide active"><div class="slide-content">
+let html=`
+<div class="slider">
+<div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1526378722484-bd91ca387e72')">
+<div class="slide-content">
 <h1>DivinityPro</h1>
 <p>Where premium domains live</p>
+</div></div>
+<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d')">
+<div class="slide-content">
+<h1>High Value Domains</h1>
+<p>Secure deals via GoDaddy</p>
+</div></div>
+<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1518779578993-ec3579fee39f')">
+<div class="slide-content">
+<h1>Brand Power</h1>
+<p>Get your perfect domain today</p>
 </div></div>
 <div class="dots"></div>
 </div>
 
-<div class="domain-slider"><div class="domain-track">`;
+<div class="domain-slider">
+<div class="domain-track">`;
 
 domains.forEach(d=>{
 html+=`<div class="domain-bubble" onclick="window.location='?domain=${d}'">${d}</div>`;
 });
 
-html+=`</div></div><div id="domains">`;
+html+=`</div></div>
+
+<div id="domains">`;
 
 domains.forEach(d=>{
 html+=`<div class="card" onclick="window.location='?domain=${d}'">
@@ -320,10 +447,11 @@ html+=`<div class="card" onclick="window.location='?domain=${d}'">
 });
 
 html+=`</div>`;
+
 document.getElementById('app').innerHTML=html;
+initSlider();
 }
 
-/* ===== LANDING ===== */
 function showLanding(domain){
 document.getElementById('app').innerHTML=`
 <div class="landing">
@@ -341,24 +469,56 @@ document.getElementById('app').innerHTML=`
 function sendOffer(domain){
 let price=document.getElementById('offerPrice').value;
 if(!price){alert("Enter your offer");return;}
-window.open(`https://wa.me/${WHATSAPP}?text=Hello I want ${domain} Offer: $${price}`);
+let msg=`Hello, I want ${domain}%0AOffer: $${price}`;
+window.open(`https://wa.me/${WHATSAPP}?text=${msg}`);
 }
 
-/* ===== FAKE ACTIVITY ===== */
+function initSlider(){
+const slides=document.querySelectorAll('.slide');
+const dotsContainer=document.querySelector('.dots');
+let index=0;
+
+slides.forEach((_,i)=>{
+let dot=document.createElement('div');
+dot.classList.add('dot');
+if(i===0) dot.classList.add('active');
+dot.onclick=()=>{index=i;showSlide(index);};
+dotsContainer.appendChild(dot);
+});
+
+const dots=document.querySelectorAll('.dot');
+
+function showSlide(i){
+slides.forEach(s=>s.classList.remove('active'));
+dots.forEach(d=>d.classList.remove('active'));
+slides[i].classList.add('active');
+dots[i].classList.add('active');
+}
+
+setInterval(()=>{
+index=(index+1)%slides.length;
+showSlide(index);
+},4000);
+}
+
 function fakeActivity(domains){
 setInterval(()=>{
 let d=domains[Math.floor(Math.random()*domains.length)];
 let popup=document.getElementById('popup');
 popup.innerText=`Someone made offer on ${d}`;
 popup.style.display='block';
-setTimeout(()=>popup.style.display='none',3000);
+setTimeout(()=>{popup.style.display='none';},3000);
 },5000);
 }
 </script>
 
 <footer>
-<div>DivinityPro</div>
-<div>contact@divinitypro.com | +218 916 073 973</div>
+<div class="logo-footer">DivinityPro</div>
+<div class="contact-info">
+<div><i class="fas fa-envelope"></i> contact@divinitypro.com</div>
+<div><i class="fas fa-phone"></i> +218 916 073 973</div>
+<div><i class="fas fa-globe"></i> www.divinitypro.com</div>
+</div>
 </footer>
 
 </body>
